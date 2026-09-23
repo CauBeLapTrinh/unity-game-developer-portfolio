@@ -26,13 +26,25 @@
                     <div class="minigame-thumb">
                         <img src="${game.image}" alt="${game.title}"
                              onerror="handleImageFallback(this, '${game.fallbackImage}', '${game.title}', '${game.icon}', '${game.gradient}')" />
+                        ${game.youtubeVideoId ? `
+                            <span class="card-video-pill" onclick="event.stopPropagation(); openProjectDetail('${game.id}', true, true)" title="Watch Gameplay Video">
+                                <i class="fa-brands fa-youtube"></i> Video Demo
+                            </span>
+                        ` : ''}
                     </div>
                     <div class="minigame-card-body">
                         <h3 class="minigame-title">${game.title}</h3>
                         <p class="minigame-desc">${game.shortDesc}</p>
-                        <button class="btn-view-details" onclick="openProjectDetail('${game.id}')" type="button">
-                            View Details <i class="fa-solid fa-arrow-right"></i>
-                        </button>
+                        <div class="minigame-card-actions">
+                            <button class="btn-view-details" onclick="openProjectDetail('${game.id}')" type="button">
+                                View Details <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                            ${game.youtubeVideoId ? `
+                                <button class="btn-card-video" onclick="event.stopPropagation(); openProjectDetail('${game.id}', true, true)" type="button" title="Watch Gameplay Video">
+                                    <i class="fa-brands fa-youtube"></i> Video
+                                </button>
+                            ` : ''}
+                        </div>
                     </div>
                 `;
                 minigamesGrid.appendChild(card);
@@ -76,7 +88,7 @@
         const modalContentContainer = document.getElementById("modalContentContainer");
         const btnBackProjects = document.getElementById("btnBackProjects");
 
-        function openProjectDetail(gameId, updateHash = true) {
+        function openProjectDetail(gameId, updateHash = true, scrollToVideo = false) {
             const game = minigamesData.find(g => g.id === gameId || (gameId === "death-loop" && g.id === "exima"));
             if (!game) return;
 
@@ -286,7 +298,19 @@
             projectDetailModal.classList.add("active");
             document.body.style.overflow = "hidden";
             projectDetailModal.scrollTop = 0;
+
+            if (scrollToVideo) {
+                setTimeout(() => {
+                    const videoBlock = modalContentContainer.querySelector(".detail-media-container");
+                    if (videoBlock) {
+                        videoBlock.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                }, 280);
+            }
         }
+
+        // Expose openProjectDetail globally
+        window.openProjectDetail = openProjectDetail;
 
         function closeProjectDetail() {
             projectDetailModal.classList.remove("active");

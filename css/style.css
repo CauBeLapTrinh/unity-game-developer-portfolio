@@ -796,6 +796,87 @@
             box-shadow: 0 6px 20px rgba(109, 40, 217, 0.45);
         }
 
+        .card-video-pill {
+            position: absolute;
+            bottom: 12px;
+            left: 12px;
+            background: rgba(220, 38, 38, 0.92);
+            backdrop-filter: blur(6px);
+            color: #ffffff;
+            font-size: 0.76rem;
+            font-weight: 800;
+            padding: 4px 11px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            z-index: 2;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(220, 38, 38, 0.45);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .card-video-pill:hover {
+            transform: scale(1.06);
+            background: #ef4444;
+        }
+
+        .minigame-card-actions {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .btn-card-video {
+            background: rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            border-radius: 999px;
+            padding: 9px 16px;
+            font-size: 0.86rem;
+            font-weight: 800;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: all 0.25s ease;
+        }
+
+        .btn-card-video:hover {
+            background: #ef4444;
+            color: #ffffff;
+            border-color: #ef4444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+        }
+
+        .btn-watch-video {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(239, 68, 68, 0.12);
+            color: #ef4444;
+            border: 1px solid rgba(239, 68, 68, 0.35);
+            border-radius: 999px;
+            padding: 0 20px;
+            min-height: 40px;
+            font-size: 0.88rem;
+            font-weight: 800;
+            cursor: pointer;
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            text-decoration: none;
+        }
+
+        .btn-watch-video:hover {
+            background: #ef4444;
+            color: #ffffff;
+            border-color: #ef4444;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
+        }
+
         /* =========================
            PROJECT DETAIL VIEW / MODAL (Tương tự foliotuantran.netlify.app)
            ========================= */
@@ -1774,40 +1855,48 @@
             margin-bottom: 16px;
         }
 
-        /* RPG Skill Experience Bar */
-        .skill-stat-gauge {
+        /* Practical Competency Matrix (Production Experience & Stack) */
+        .skill-meta-row {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            flex-wrap: wrap;
+            gap: 8px;
             margin-top: auto;
+            padding-top: 14px;
+            border-top: 1px dashed var(--line);
         }
 
-        .gauge-bar {
-            flex: 1;
-            height: 6px;
-            background: var(--line);
-            border-radius: 999px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .gauge-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            border-radius: 999px;
-            transition: width 1s ease-out;
-            position: relative;
-        }
-
-        .skill-card:hover .gauge-fill {
-            box-shadow: 0 0 10px var(--accent);
-        }
-
-        .gauge-val {
+        .skill-metric-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
             font-family: monospace;
-            font-size: 0.76rem;
-            font-weight: 800;
-            color: var(--muted);
+            font-size: 0.74rem;
+            font-weight: 700;
+            color: var(--primary);
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            padding: 3px 8px;
+            border-radius: 6px;
+            letter-spacing: 0.02em;
+        }
+
+        .skill-chips-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 10px;
+            width: 100%;
+        }
+
+        .skill-chip {
+            font-size: 0.74rem;
+            font-weight: 600;
+            color: var(--ink);
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            padding: 2px 8px;
+            border-radius: 4px;
+            letter-spacing: 0.01em;
         }
 
         /* =========================
@@ -1929,11 +2018,13 @@
             font-size: 0.86rem;
         }
 
-        .blog {
+        .blog,
+        .tech-radar {
             background: transparent;
         }
 
-        .blog-card {
+        .blog-card,
+        .radar-card {
             background: rgba(255, 255, 255, 0.72);
             backdrop-filter: blur(14px);
             -webkit-backdrop-filter: blur(14px);
@@ -1942,16 +2033,25 @@
             padding: 26px;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
+            display: flex;
+            flex-direction: column;
         }
 
-        body.dark .blog-card {
+        body.dark .blog-card,
+        body.dark .radar-card {
             background: rgba(16, 24, 39, 0.72);
         }
 
-        .blog-card:hover {
+        .blog-card:hover,
+        .radar-card:hover {
             border-color: var(--primary);
             transform: translateY(-6px);
             box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
+        }
+
+        body.dark .blog-card:hover,
+        body.dark .radar-card:hover {
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
         }
 
         .codex-tag {
@@ -1971,7 +2071,8 @@
             width: fit-content;
         }
 
-        .blog-card img {
+        .blog-card img,
+        .radar-card img {
             aspect-ratio: 1.5 / 1;
             background: #090d16;
             border-radius: 16px;
@@ -1984,11 +2085,13 @@
             transition: transform 0.35s ease;
         }
 
-        .blog-card:hover img {
+        .blog-card:hover img,
+        .radar-card:hover img {
             transform: scale(1.03);
         }
 
-        .blog-meta {
+        .blog-meta,
+        .radar-meta {
             color: var(--primary);
             font-size: 0.82rem;
             font-weight: 900;
@@ -1996,16 +2099,23 @@
             text-transform: uppercase;
         }
 
-        .blog-card h3 {
+        .blog-card h3,
+        .radar-card h3 {
             font-family: "Poppins", sans-serif;
             font-size: 1.28rem;
             line-height: 1.25;
             margin-bottom: 12px;
         }
 
-        .blog-card p {
+        .blog-card p,
+        .radar-card p {
             color: var(--muted);
             margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .radar-card .text-link {
+            margin-top: auto;
         }
 
         /* =========================

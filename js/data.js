@@ -8,7 +8,7 @@ const minigamesData = [
         category: "2-4-player",
         collection: "2 & 4 Player Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi",
-        downloads: "10M+ Downloads",
+        downloads: "Part of 10M+ Suite",
         gradient: "linear-gradient(135deg, #0284c7, #0369a1)",
         icon: "fa-solid fa-fish-fins",
         image: "Imgs/Minigame/FishEatFish.png",
@@ -25,7 +25,7 @@ const minigamesData = [
                 team: "4 Members"
             },
             links: [
-                { name: "Google Play (10M+)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
+                { name: "Google Play (10M+ Suite)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
             contributions: [
@@ -55,7 +55,7 @@ const minigamesData = [
         category: "2-4-player",
         collection: "2 & 4 Player Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi",
-        downloads: "10M+ Downloads",
+        downloads: "Part of 10M+ Suite",
         gradient: "linear-gradient(135deg, #b45309, #d97706)",
         icon: "fa-solid fa-sack-dollar",
         image: "Imgs/Minigame/BankHeist.png",
@@ -72,7 +72,7 @@ const minigamesData = [
                 team: "4 Members"
             },
             links: [
-                { name: "Google Play (10M+)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
+                { name: "Google Play (10M+ Suite)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
             contributions: [
@@ -102,7 +102,7 @@ const minigamesData = [
         category: "2-4-player",
         collection: "2 & 4 Player Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi",
-        downloads: "10M+ Downloads",
+        downloads: "Part of 10M+ Suite",
         gradient: "linear-gradient(135deg, #15803d, #16a34a)",
         icon: "fa-solid fa-shield-halved",
         image: "Imgs/Minigame/TankStars.png",
@@ -119,7 +119,7 @@ const minigamesData = [
                 team: "4 Members"
             },
             links: [
-                { name: "Google Play (10M+)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
+                { name: "Google Play (10M+ Suite)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
             contributions: [
@@ -149,7 +149,7 @@ const minigamesData = [
         category: "gameboy",
         collection: "GameBoy: 100+ Mini Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi",
-        downloads: "1M+ Downloads",
+        downloads: "Part of 1M+ Suite",
         gradient: "linear-gradient(135deg, #7c3aed, #6d28d9)",
         icon: "fa-solid fa-person-running",
         image: "Imgs/Minigame/StickmanHook.png",
@@ -166,7 +166,7 @@ const minigamesData = [
                 team: "3 Members"
             },
             links: [
-                { name: "Google Play (1M+)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" },
+                { name: "Google Play (1M+ Suite)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
             contributions: [
@@ -196,7 +196,7 @@ const minigamesData = [
         category: "gameboy",
         collection: "GameBoy: 100+ Mini Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi",
-        downloads: "1M+ Downloads",
+        downloads: "Part of 1M+ Suite",
         gradient: "linear-gradient(135deg, #0f766e, #14b8a6)",
         icon: "fa-solid fa-user-secret",
         image: "Imgs/Minigame/StickmanEscape.png",
@@ -214,7 +214,7 @@ const minigamesData = [
                 team: "3 Members"
             },
             links: [
-                { name: "Google Play (1M+)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" },
+                { name: "Google Play (1M+ Suite)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" },
                 { name: "YouTube Gameplay", icon: "fa-brands fa-youtube", url: "https://www.youtube.com/watch?v=4fVC-3V-h8Q" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],

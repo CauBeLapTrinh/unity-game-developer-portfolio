@@ -12,10 +12,10 @@ Personal portfolio showcasing commercial mobile games, prototypes, and technical
 
 ## 🎮 Featured Commercial Game Suites
 
-- **[2 & 4 Player Games (10M+ Downloads)](https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi)**: Commercial local multiplayer suite on Google Play.
-  - Featured Minigames: *FishEatFish*, *BankHeist*, *TankStars*.
-- **[GameBoy: 100+ Mini Games (1M+ Downloads)](https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi)**: Hyper-casual action collection on Google Play.
-  - Featured Minigames: *StickmanHook*, *StickmanEscape*.
+- **[2 & 4 Player Games (10M+ Downloads Studio Suite)](https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi)**: Commercial local multiplayer suite on Google Play.
+  - Contributed Minigames: *FishEatFish*, *BankHeist*, *TankStars*.
+- **[GameBoy: 100+ Mini Games (1M+ Downloads Studio Suite)](https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi)**: Hyper-casual action collection on Google Play.
+  - Contributed Minigames: *StickmanHook*, *StickmanEscape*.
 - **[Game Jam 2026 (Third Prize - Exima)](https://www.facebook.com/gamejam.vn/posts/pfbid0TGtKK9hNQeQQ3yshVtT22bY8yJuuWSnM4wvtB1oPQc8471k5q3m2H8WKbmuNpuPWl)**: Awarded by Posts and Telecommunications Institute of Technology (PTIT).
 
 ---
