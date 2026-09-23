@@ -877,6 +877,89 @@
             box-shadow: 0 6px 20px rgba(239, 68, 68, 0.35);
         }
 
+        /* Catalog Counter Pill */
+        .catalog-counter-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            background: var(--surface-2);
+            border: 1px solid var(--line);
+            padding: 6px 16px;
+            border-radius: 999px;
+            margin-bottom: 24px;
+            letter-spacing: 0.03em;
+        }
+
+        /* More In Studio Vault Banner */
+        .more-vault-card {
+            background: rgba(255, 255, 255, 0.72);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border: 1px dashed var(--line);
+            border-radius: 24px;
+            padding: 26px 30px;
+            margin-top: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 24px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            transition: border-color 0.25s ease, transform 0.25s ease;
+        }
+
+        body.dark .more-vault-card {
+            background: rgba(16, 24, 39, 0.72);
+        }
+
+        .more-vault-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .more-vault-left {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .vault-icon-glow {
+            width: 54px;
+            height: 54px;
+            border-radius: 16px;
+            background: var(--soft-accent);
+            color: var(--primary);
+            display: grid;
+            place-items: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .more-vault-left h4 {
+            font-family: "Poppins", sans-serif;
+            font-size: 1.15rem;
+            font-weight: 800;
+            margin-bottom: 4px;
+            color: var(--ink);
+        }
+
+        .more-vault-left p {
+            color: var(--muted);
+            font-size: 0.92rem;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .more-vault-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-shrink: 0;
+        }
+
         /* =========================
            PROJECT DETAIL VIEW / MODAL (Tương tự foliotuantran.netlify.app)
            ========================= */
@@ -1553,6 +1636,101 @@
 
         .text-link:hover {
             gap: 14px;
+        }
+
+        /* Studio Archive Showcase Card */
+        .archive-card {
+            border: 1px dashed var(--line);
+        }
+
+        .archive-media {
+            background: radial-gradient(circle at center, rgba(37, 99, 235, 0.18) 0%, rgba(15, 23, 42, 0.98) 100%), #080d1a !important;
+            padding: 24px !important;
+        }
+
+        .archive-preview-inner {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .archive-chip-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+            max-width: 420px;
+        }
+
+        .archive-chip {
+            font-size: 0.76rem;
+            font-weight: 700;
+            font-family: monospace;
+            color: #e2e8f0;
+            background: rgba(30, 41, 59, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            padding: 4px 10px;
+            border-radius: 6px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: transform 0.2s ease, border-color 0.2s ease;
+        }
+
+        .archive-chip i {
+            color: var(--primary);
+        }
+
+        .archive-chip:hover {
+            transform: translateY(-2px);
+            border-color: var(--primary);
+            color: #60a5fa;
+        }
+
+        .archive-chip.archive-chip-more {
+            background: rgba(37, 99, 235, 0.25);
+            border-color: rgba(96, 165, 250, 0.5);
+            color: #93c5fd;
+        }
+
+        .archive-center-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
+            background: rgba(15, 23, 42, 0.9);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 10px 22px;
+            border-radius: 12px;
+            box-shadow: 0 0 20px rgba(56, 189, 248, 0.2);
+        }
+
+        .archive-center-badge i {
+            font-size: 1.5rem;
+            color: #38bdf8;
+        }
+
+        .archive-center-badge span {
+            font-family: monospace;
+            font-size: 0.78rem;
+            font-weight: 900;
+            letter-spacing: 0.1em;
+            color: #38bdf8;
+        }
+
+        .hud-dot.archive {
+            background: #38bdf8;
+            box-shadow: 0 0 10px #38bdf8;
+            animation: pulseDotArchive 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseDotArchive {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(0.7); opacity: 0.45; }
         }
 
         /* =========================
@@ -2419,6 +2597,23 @@
 
             .portrait-card img {
                 min-height: 440px;
+            }
+
+            .more-vault-card {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+                padding: 22px 20px;
+            }
+
+            .more-vault-actions {
+                width: 100%;
+                flex-direction: column;
+            }
+
+            .more-vault-actions .btn {
+                width: 100%;
+                text-align: center;
             }
 
             .skills-grid,
