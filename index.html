@@ -4,14 +4,17 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     <meta name="description"
         content="Portfolio of Vu Gia Viet - Unity Game Developer with 2+ years of experience building cross-platform 2D/3D games, local multiplayer, and AI workflow automation (MCP, Copilot)." />
     <title>Vu Gia Viet | Unity Game Developer</title>
     <!-- Favicon & Meta -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>" />
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>" />
     <meta name="theme-color" content="#1e3a8a" />
     <meta property="og:title" content="Vu Gia Viet | Unity Game Developer" />
-    <meta property="og:description" content="Portfolio of Vu Gia Viet - 2+ years Unity Game Developer, 10M+ downloads, AI workflow automation (MCP, Copilot)." />
+    <meta property="og:description"
+        content="Portfolio of Vu Gia Viet - 2+ years Unity Game Developer, 10M+ downloads, AI workflow automation (MCP, Copilot)." />
     <meta property="og:type" content="website" />
 
 
@@ -27,6 +30,15 @@
 </head>
 
 <body>
+    <!-- DYNAMIC GAME DEV BACKGROUND SYSTEM -->
+    <div class="game-bg-system" aria-hidden="true">
+        <div class="game-bg-grid"></div>
+        <div class="ambient-light-blob blob-blue"></div>
+        <div class="ambient-light-blob blob-lime"></div>
+        <div class="ambient-light-blob blob-purple"></div>
+        <canvas id="gameDevCanvas"></canvas>
+    </div>
+
     <!-- HEADER -->
     <header class="site-header" id="siteHeader">
         <nav class="nav container" aria-label="Main menu">
@@ -63,12 +75,15 @@
                     <h1>Hi, I'm <span>Vu Gia Viet</span></h1>
                     <p class="hero-subtitle">Unity Game Developer & AI Workflow Integrator</p>
                     <p class="hero-lead">Game Developer with over 2 years of hands-on experience building
-                        cross-platform 2D/3D games and interactive applications using Unity and C#. Proficient in integrating
-                        advanced AI workflows (Model Context Protocol - MCP, GitHub Copilot) to automate boilerplate code,
+                        cross-platform 2D/3D games and interactive applications using Unity and C#. Proficient in
+                        integrating
+                        advanced AI workflows (Model Context Protocol - MCP, GitHub Copilot) to automate boilerplate
+                        code,
                         optimize game physics logic, and sustain stable 60 FPS performance.</p>
 
                     <div class="hero-actions">
-                        <a class="btn btn-accent" href="#minigames">Explore Minigames <i class="fa-solid fa-gamepad"></i></a>
+                        <a class="btn btn-accent" href="#minigames">Explore Minigames <i
+                                class="fa-solid fa-gamepad"></i></a>
                         <a class="btn btn-light" href="#work">View Projects</a>
                         <a class="btn btn-light" href="#contact">Get in touch</a>
                     </div>
@@ -90,7 +105,9 @@
                 </div>
 
                 <div class="portrait-card">
+                    <div class="floating-game-badge badge-top-left"><i class="fa-brands fa-unity"></i> Unity 2D/3D</div>
                     <img src="imgs/Avatar.jpg" alt="Portrait of Vu Gia Viet - Unity Game Developer" />
+                    <div class="floating-game-badge badge-bottom-right"><i class="fa-solid fa-gamepad"></i> 10M+ Downloads</div>
                     <div class="floating-note">
                         <i class="fa-solid fa-code" style="color: #2563eb;"></i> Open to Mid-level Opportunities
                     </div>
@@ -106,7 +123,8 @@
                         <span class="section-kicker"><i class="fa-solid fa-gamepad"></i> Game Showcase</span>
                         <h2>Projects developed at BonBonGame</h2>
                     </div>
-                    <p>A collection of commercial minigames and interactive mechanics engineered with Unity, C#, 2D physics,
+                    <p>A collection of commercial minigames and interactive mechanics engineered with Unity, C#, 2D
+                        physics,
                         and responsive gameplay systems.</p>
                 </div>
 
@@ -115,6 +133,7 @@
                     <button class="filter-btn active" data-filter="all">All Minigames</button>
                     <button class="filter-btn" data-filter="2-4-player">2 & 4 Player Games (10M+)</button>
                     <button class="filter-btn" data-filter="gameboy">GameBoy: 100+ Games (1M+)</button>
+                    <button class="filter-btn" data-filter="gamejam">Game Jam 2026</button>
                 </div>
 
                 <!-- Minigames grid -->
@@ -132,17 +151,21 @@
                         <span class="section-kicker">Portfolio Highlights</span>
                         <h2>Featured game suites</h2>
                     </div>
-                    <p>Major commercial titles and game jam projects delivered with clean architecture, OOP principles, and optimized runtime performance.</p>
+                    <p>Major commercial titles and game jam projects delivered with clean architecture, OOP principles,
+                        and optimized runtime performance.</p>
                 </div>
 
                 <div class="work-list">
                     <article class="project-card reveal">
                         <div class="project-media">
-                            <a href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" target="_blank" rel="noopener" title="Download on Google Play" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                            <a href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi"
+                                target="_blank" rel="noopener" title="Download on Google Play"
+                                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
                                 <img src="imgs/2Player.png" alt="2 & 4 Player Games" />
                             </a>
                         </div>
                         <div class="project-content">
+                            <div class="project-hud-badge"><span class="hud-dot live"></span> Commercial Release // Active Serving</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">10M+ Downloads</span>
                                 <span class="tag">Unity</span>
@@ -150,23 +173,32 @@
                                 <span class="tag">FSM & Object Pooling</span>
                             </div>
                             <h3>2 & 4 Player Games</h3>
-                            <p>Commercial mobile game suite reaching over 10M+ downloads on Google Play. Built core gameplay systems, independent multi-touch joysticks, dynamic character scaling, and autonomous ambient fish AI for hit games like FishEatFish, BankHeist, and TankWar.</p>
+                            <p>Commercial mobile game suite reaching over 10M+ downloads on Google Play. Built core
+                                gameplay systems, independent multi-touch joysticks, dynamic character scaling, and
+                                autonomous ambient fish AI for hit games like FishEatFish, BankHeist, and TankStars.</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-                                <a class="btn btn-accent" href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" target="_blank" rel="noopener" style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
+                                <a class="btn btn-accent"
+                                    href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi"
+                                    target="_blank" rel="noopener"
+                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
                                     <i class="fa-brands fa-google-play"></i> Google Play (10M+)
                                 </a>
-                                <a class="text-link" href="#minigames">Explore included minigames <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="text-link" href="#minigames">Explore included minigames <i
+                                        class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card reveal">
                         <div class="project-media">
-                            <a href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" target="_blank" rel="noopener" title="Download on Google Play" style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
+                            <a href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi"
+                                target="_blank" rel="noopener" title="Download on Google Play"
+                                style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
                                 <img src="imgs/stickman.png" alt="GameBoy: 100+ Mini Games" />
                             </a>
                         </div>
                         <div class="project-content">
+                            <div class="project-hud-badge"><span class="hud-dot live"></span> Commercial Release // 1M+ Global</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">1M+ Downloads</span>
                                 <span class="tag">Unity 2D</span>
@@ -174,30 +206,53 @@
                                 <span class="tag">Patrol AI</span>
                             </div>
                             <h3>GameBoy: 100+ Mini Games</h3>
-                            <p>Popular hyper-casual collection with 1M+ downloads. Developed responsive momentum-based swinging flight dynamics with DistanceJoint2D in StickmanHook, plus 2-player cooperative puzzle triggers, waypoint patrol AI, and multi-target cameras in StickmanEscape.</p>
+                            <p>Popular hyper-casual collection with 1M+ downloads. Developed responsive momentum-based
+                                swinging flight dynamics with DistanceJoint2D in StickmanHook, plus 2-player cooperative
+                                puzzle triggers, waypoint patrol AI, and multi-target cameras in StickmanEscape.</p>
                             <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-                                <a class="btn btn-accent" href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" target="_blank" rel="noopener" style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
+                                <a class="btn btn-accent"
+                                    href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi"
+                                    target="_blank" rel="noopener"
+                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
                                     <i class="fa-brands fa-google-play"></i> Google Play (1M+)
                                 </a>
-                                <a class="text-link" href="#minigames">Explore included minigames <i class="fa-solid fa-arrow-right"></i></a>
+                                <a class="text-link" href="#minigames">Explore included minigames <i
+                                        class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card reveal">
                         <div class="project-media">
-                            <img src="imgs/gameJamicon.PNG" alt="Game Jam 2026 project" />
+                            <img src="Imgs/Minigame/Exima/Home.PNG" alt="Exima - Game Jam 2026 Third Prize" />
                         </div>
                         <div class="project-content">
+                            <div class="project-hud-badge"><span class="hud-dot trophy"></span> Competition Award // Third Prize (PTIT)</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">Third Prize</span>
                                 <span class="tag">PTIT 2026</span>
                                 <span class="tag">Unity</span>
                                 <span class="tag">Rapid Prototyping</span>
                             </div>
-                            <h3>Third Prize - Game Jam 2026</h3>
-                            <p>Award-winning competition entry organized by Posts and Telecommunications Institute of Technology (PTIT). Designed and shipped a complete playable game prototype within strict hackathon constraints, focusing on innovative mechanics and rapid iteration.</p>
-                            <a class="text-link" href="#contact">Discuss project details <i class="fa-solid fa-arrow-right"></i></a>
+                            <h3>Third Prize - Game Jam 2026 (Exima)</h3>
+                            <p>Award-winning competition entry organized by Posts and Telecommunications Institute of
+                                Technology (PTIT). Designed and shipped a complete playable game prototype within strict
+                                hackathon constraints, focusing on innovative mechanics and rapid iteration.</p>
+                            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+                                <button class="btn btn-accent" onclick="openProjectDetail('exima')" type="button"
+                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
+                                    <i class="fa-solid fa-circle-info"></i> View Project Details
+                                </button>
+                                <a class="text-link" href="https://github.com/CauBeLapTrinh/GameJam-2026"
+                                    target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repository <i
+                                        class="fa-solid fa-arrow-up-right-from-square"
+                                        style="font-size: 0.74rem;"></i></a>
+                                <a class="text-link"
+                                    href="https://www.facebook.com/gamejam.vn/posts/pfbid0TGtKK9hNQeQQ3yshVtT22bY8yJuuWSnM4wvtB1oPQc8471k5q3m2H8WKbmuNpuPWl"
+                                    target="_blank" rel="noopener"><i class="fa-solid fa-trophy"></i> Game Jam Info <i
+                                        class="fa-solid fa-arrow-up-right-from-square"
+                                        style="font-size: 0.74rem;"></i></a>
+                            </div>
                         </div>
                     </article>
                 </div>
@@ -212,14 +267,16 @@
                         <span class="section-kicker"><i class="fa-solid fa-briefcase"></i> Background</span>
                         <h2>Work experience & education</h2>
                     </div>
-                    <p>Demonstrated industry track record in shipping commercial mobile titles, automating workflows with AI, and academic distinction.</p>
+                    <p>Demonstrated industry track record in shipping commercial mobile titles, automating workflows
+                        with AI, and academic distinction.</p>
                 </div>
 
                 <div class="exp-edu-grid">
                     <!-- Left: Work Experience -->
                     <div class="reveal">
                         <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 20px;">
-                            <i class="fa-solid fa-building" style="color: var(--primary); margin-right: 8px;"></i> Experience
+                            <i class="fa-solid fa-building" style="color: var(--primary); margin-right: 8px;"></i>
+                            Experience
                         </h3>
 
                         <!-- Junior Developer -->
@@ -233,11 +290,31 @@
                             </div>
                             <div class="timeline-body">
                                 <ul>
-                                    <li><i class="fa-solid fa-circle-check"></i> Built core gameplay systems, player mechanics, physics interactions, enemy AI, and responsive game UI in Unity (C#) across multiple genres including casual, action, physics, and strategy.</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> Delivered key games for <a href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline; font-weight: 800;">"2 & 4 Player Games" (10M+ downloads) <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.74rem;"></i></a>: FishEatFish, BankHeist, BulletBros, TankWar, RedBlueAdventure.</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> Developed physics and co-op games for <a href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi" target="_blank" rel="noopener" style="color: var(--primary); text-decoration: underline; font-weight: 800;">"GameBoy: 100+ Mini Games" (1M+ downloads) <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.74rem;"></i></a>: StickmanHook, StickmanEscape, DrawToFight.</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> Streamlined the software development lifecycle by integrating Model Context Protocol (MCP) and LLMs, cutting debugging time by ~30% and speeding up feature deployment.</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> Profiled and optimized runtime performance (AssetBundles, memory management, draw call batching) to sustain a stable 60 FPS on low-to-mid-range devices.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Built core gameplay systems, player
+                                        mechanics, physics interactions, enemy AI, and responsive game UI in Unity (C#)
+                                        across multiple genres including casual, action, physics, and strategy.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Delivered key games for <a
+                                            href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi"
+                                            target="_blank" rel="noopener"
+                                            style="color: var(--primary); text-decoration: underline; font-weight: 800;">"2
+                                            & 4 Player Games" (10M+ downloads) <i
+                                                class="fa-solid fa-arrow-up-right-from-square"
+                                                style="font-size: 0.74rem;"></i></a>: FishEatFish, BankHeist, TankStars.
+                                    </li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Developed physics and co-op games for
+                                        <a href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi"
+                                            target="_blank" rel="noopener"
+                                            style="color: var(--primary); text-decoration: underline; font-weight: 800;">"GameBoy:
+                                            100+ Mini Games" (1M+ downloads) <i
+                                                class="fa-solid fa-arrow-up-right-from-square"
+                                                style="font-size: 0.74rem;"></i></a>: StickmanHook, StickmanEscape.
+                                    </li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Streamlined the software development
+                                        lifecycle by integrating Model Context Protocol (MCP) and LLMs, cutting
+                                        debugging time by ~30% and speeding up feature deployment.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Profiled and optimized runtime
+                                        performance (AssetBundles, memory management, draw call batching) to sustain a
+                                        stable 60 FPS on low-to-mid-range devices.</li>
                                 </ul>
                             </div>
                         </div>
@@ -253,8 +330,11 @@
                             </div>
                             <div class="timeline-body">
                                 <ul>
-                                    <li><i class="fa-solid fa-circle-check"></i> Built and validated 3 functional 2D game prototypes for Windows, Android, and iOS platforms.</li>
-                                    <li><i class="fa-solid fa-circle-check"></i> Assisted senior engineers in debugging gameplay logic, refactoring core scripts, and reducing asset loading latency.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Built and validated 3 functional 2D
+                                        game prototypes for Windows, Android, and iOS platforms.</li>
+                                    <li><i class="fa-solid fa-circle-check"></i> Assisted senior engineers in debugging
+                                        gameplay logic, refactoring core scripts, and reducing asset loading latency.
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -263,7 +343,8 @@
                     <!-- Right: Education & Honors -->
                     <div class="reveal">
                         <h3 style="font-family: 'Poppins', sans-serif; font-size: 1.4rem; margin-bottom: 20px;">
-                            <i class="fa-solid fa-graduation-cap" style="color: var(--primary); margin-right: 8px;"></i> Education & Honors
+                            <i class="fa-solid fa-graduation-cap" style="color: var(--primary); margin-right: 8px;"></i>
+                            Education & Honors
                         </h3>
 
                         <!-- Education -->
@@ -276,11 +357,13 @@
                                 <span class="timeline-badge">2021 - 2025</span>
                             </div>
                             <div class="timeline-body" style="margin-top: 12px;">
-                                <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(163, 230, 53, 0.2); padding: 6px 14px; border-radius: 999px; font-weight: 800; font-size: 0.88rem; color: var(--accent-ink);">
+                                <div
+                                    style="display: inline-flex; align-items: center; gap: 8px; background: rgba(163, 230, 53, 0.2); padding: 6px 14px; border-radius: 999px; font-weight: 800; font-size: 0.88rem; color: var(--accent-ink);">
                                     <i class="fa-solid fa-award"></i> Graduated with Distinction (Tốt nghiệp loại Giỏi)
                                 </div>
                                 <p style="margin-top: 12px; color: var(--muted); font-size: 0.94rem;">
-                                    Solid foundation in Object-Oriented Programming (OOP), Data Structures & Algorithms, Computer Networks, and Game Software Engineering.
+                                    Solid foundation in Object-Oriented Programming (OOP), Data Structures & Algorithms,
+                                    Computer Networks, and Game Software Engineering.
                                 </p>
                             </div>
                         </div>
@@ -291,15 +374,18 @@
                                 <i class="fa-solid fa-trophy"></i>
                             </div>
                             <div class="award-info">
+                                <span class="achievement-pill"><i class="fa-solid fa-unlock-keyhole"></i> Achievement Unlocked</span>
                                 <h4>Third Prize - Game Jam 2026</h4>
-                                <p>Organized by Posts and Telecommunications Institute of Technology (PTIT). Recognized for exceptional game design, technical execution, and polish.</p>
+                                <p>Organized by Posts and Telecommunications Institute of Technology (PTIT). Recognized
+                                    for exceptional game design, technical execution, and polish.</p>
                             </div>
                         </div>
 
                         <!-- Personal Interests -->
                         <div class="timeline-card" style="margin-top: 24px;">
                             <h4 style="font-family: 'Poppins', sans-serif; font-size: 1.1rem; margin-bottom: 12px;">
-                                <i class="fa-solid fa-heart" style="color: #ef4444; margin-right: 6px;"></i> Interests & Pursuits
+                                <i class="fa-solid fa-heart" style="color: #ef4444; margin-right: 6px;"></i> Interests &
+                                Pursuits
                             </h4>
                             <div style="display: flex; flex-wrap: wrap; gap: 8px;">
                                 <span class="tag">Learning New Technologies & Frameworks</span>
@@ -322,9 +408,14 @@
                 <div class="about-copy reveal">
                     <span class="section-kicker">About me</span>
                     <h2>Engineering smooth gameplay & modern pipelines</h2>
-                    <p>I am a Unity Game Developer with over 2 years of hands-on experience building cross-platform 2D/3D games and interactive applications using Unity and C#.</p>
-                    <p>I am proficient in integrating advanced AI workflows (Model Context Protocol - MCP, GitHub Copilot, LLM prompt engineering) into the development pipeline to automate boilerplate code, optimize game physics logic, and cut debugging cycles by ~30%.</p>
-                    <p>Seeking to leverage solid OOP foundations and performance optimization skills (AssetBundles, memory management, draw call batching) to drive high-impact gameplay while advancing into a Mid-level Game Developer role.</p>
+                    <p>I am a Unity Game Developer with over 2 years of hands-on experience building cross-platform
+                        2D/3D games and interactive applications using Unity and C#.</p>
+                    <p>I am proficient in integrating advanced AI workflows (Model Context Protocol - MCP, GitHub
+                        Copilot, LLM prompt engineering) into the development pipeline to automate boilerplate code,
+                        optimize game physics logic, and cut debugging cycles by ~30%.</p>
+                    <p>Seeking to leverage solid OOP foundations and performance optimization skills (AssetBundles,
+                        memory management, draw call batching) to drive high-impact gameplay while advancing into a
+                        Mid-level Game Developer role.</p>
 
                     <div class="stack-wrap" id="skills">
                         <h3 style="font-family: 'Poppins', sans-serif; margin-bottom: 16px;">Core Competencies</h3>
@@ -345,34 +436,81 @@
 
             <div class="container skills-grid">
                 <article class="skill-card reveal">
-                    <i class="fa-brands fa-unity"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-brands fa-unity"></i>
+                        <span class="skill-level-badge">LVL 95 // C# CORE</span>
+                    </div>
                     <h3>Game Development</h3>
-                    <p>Unity (2D/3D), Physics (RigidBody, Ragdoll, Joint Constraints), Game Architecture, Object-Oriented Design (OOP).</p>
+                    <p>Unity (2D/3D), Physics (RigidBody, Ragdoll, Joint Constraints), Game Architecture,
+                        Object-Oriented Design (OOP).</p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 95%;"></div></div>
+                        <span class="gauge-val">95%</span>
+                    </div>
                 </article>
                 <article class="skill-card reveal">
-                    <i class="fa-solid fa-microchip"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-solid fa-microchip"></i>
+                        <span class="skill-level-badge">LVL 90 // AI ENGINE</span>
+                    </div>
                     <h3>AI & Automation</h3>
-                    <p>Model Context Protocol (MCP), LLM Integration (Claude, ChatGPT), GitHub Copilot, Prompt Engineering to accelerate SDLC.</p>
+                    <p>Model Context Protocol (MCP), LLM Integration (Claude, ChatGPT), GitHub Copilot, Prompt
+                        Engineering to accelerate SDLC.</p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 90%;"></div></div>
+                        <span class="gauge-val">90%</span>
+                    </div>
                 </article>
                 <article class="skill-card reveal">
-                    <i class="fa-solid fa-mobile-screen"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-solid fa-mobile-screen"></i>
+                        <span class="skill-level-badge">LVL 92 // MULTI-TARGET</span>
+                    </div>
                     <h3>Cross-Platform & Web</h3>
-                    <p>Android, iOS, Windows, WebGL, RESTful API Integration, Responsive UI, and multi-resolution mobile adaptation.</p>
+                    <p>Android, iOS, Windows, WebGL, RESTful API Integration, Responsive UI, and multi-resolution mobile
+                        adaptation.</p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 92%;"></div></div>
+                        <span class="gauge-val">92%</span>
+                    </div>
                 </article>
                 <article class="skill-card reveal">
-                    <i class="fa-solid fa-code"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-solid fa-code"></i>
+                        <span class="skill-level-badge">LVL 95 // OOP ARCH</span>
+                    </div>
                     <h3>Programming Languages</h3>
-                    <p>C#, JavaScript, HTML5/CSS3, with strong algorithmic problem solving and clean design patterns.</p>
+                    <p>C#, JavaScript, HTML5/CSS3, with strong algorithmic problem solving and clean design patterns.
+                    </p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 95%;"></div></div>
+                        <span class="gauge-val">95%</span>
+                    </div>
                 </article>
                 <article class="skill-card reveal">
-                    <i class="fa-solid fa-gauge-high"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-solid fa-gauge-high"></i>
+                        <span class="skill-level-badge">LVL 94 // 60 FPS OPT</span>
+                    </div>
                     <h3>Optimization & Profiling</h3>
-                    <p>Unity Profiler, AssetBundles, memory allocation management, draw call batching to sustain stable 60 FPS.</p>
+                    <p>Unity Profiler, AssetBundles, memory allocation management, draw call batching to sustain stable
+                        60 FPS.</p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 94%;"></div></div>
+                        <span class="gauge-val">94%</span>
+                    </div>
                 </article>
                 <article class="skill-card reveal">
-                    <i class="fa-solid fa-screwdriver-wrench"></i>
+                    <div class="skill-card-top">
+                        <i class="fa-solid fa-screwdriver-wrench"></i>
+                        <span class="skill-level-badge">LVL 90 // DEV SUITE</span>
+                    </div>
                     <h3>Developer Tools</h3>
                     <p>Git, GitHub, Visual Studio, VS Code, Spine 2D, custom Unity Editor inspector extensions.</p>
+                    <div class="skill-stat-gauge">
+                        <div class="gauge-bar"><div class="gauge-fill" style="width: 90%;"></div></div>
+                        <span class="gauge-val">90%</span>
+                    </div>
                 </article>
             </div>
         </section>
@@ -385,26 +523,42 @@
                         <span class="section-kicker">Peer Recognition</span>
                         <h2>What teammates say</h2>
                     </div>
-                    <p>Feedback from colleagues and mentors on development velocity, code structure, and problem solving.</p>
+                    <p>Feedback from colleagues and mentors on development velocity, code structure, and problem
+                        solving.</p>
                 </div>
 
                 <div class="review-grid">
                     <article class="review-card reveal">
-                        <p>"Viet learns quickly, proactively integrates cutting-edge AI tools like MCP to speed up debugging, and delivers reliable gameplay code before the deadline."</p>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="rating-label">5.0 // COMMENDED</span>
+                        </div>
+                        <p>"Viet learns quickly, proactively integrates cutting-edge AI tools like MCP to speed up
+                            debugging, and delivers reliable gameplay code before the deadline."</p>
                         <div class="review-person">
                             <img src="https://placehold.co/120x120/a3e635/111827?text=A" alt="Colleague avatar" />
                             <div><strong>Senior Game Engineer</strong><span>BonBonGame</span></div>
                         </div>
                     </article>
                     <article class="review-card reveal">
-                        <p>"Clear code, thoughtful modular architecture using Object Pooling and Observer patterns, and great team coordination on multiplayer prototypes."</p>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="rating-label">5.0 // COMMENDED</span>
+                        </div>
+                        <p>"Clear code, thoughtful modular architecture using Object Pooling and Observer patterns, and
+                            great team coordination on multiplayer prototypes."</p>
                         <div class="review-person">
                             <img src="https://placehold.co/120x120/93c5fd/111827?text=B" alt="Lead Designer avatar" />
                             <div><strong>Lead Game Designer</strong><span>Mobile Game Studio</span></div>
                         </div>
                     </article>
                     <article class="review-card reveal">
-                        <p>"Strong theoretical foundation, distinction-level graduation, and proactive practical mastery of modern game development practices."</p>
+                        <div class="review-stars">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                            <span class="rating-label">5.0 // COMMENDED</span>
+                        </div>
+                        <p>"Strong theoretical foundation, distinction-level graduation, and proactive practical mastery
+                            of modern game development practices."</p>
                         <div class="review-person">
                             <img src="https://placehold.co/120x120/f8fafc/111827?text=C" alt="Academic mentor avatar" />
                             <div><strong>Faculty Mentor</strong><span>East Asia University of Tech</span></div>
@@ -422,30 +576,43 @@
                         <span class="section-kicker">Technical Insights</span>
                         <h2>Development notes</h2>
                     </div>
-                    <p>Practical takeaways from shipping commercial minigames and competitive game jams.</p>
+                    <p>Practical takeaways from shipping commercial mobile games, architecture patterns, and AI-driven
+                        workflows.</p>
                 </div>
 
                 <div class="blog-grid">
                     <article class="blog-card reveal">
-                        <img src="imgs/UnityImg.png" alt="Unity tips" />
+                        <div class="codex-tag"><i class="fa-solid fa-microchip"></i> TECH_DOSSIER // 01</div>
+                        <img src="Imgs/dev-mcp.svg" alt="Model Context Protocol (MCP) in Unity" />
                         <div class="blog-meta">Unity & AI - 2026</div>
                         <h3>Supercharging Unity Development with Model Context Protocol (MCP)</h3>
-                        <p>How connecting LLMs directly to project files and profiler logs cut debugging time by ~30%.</p>
-                        <a class="text-link" href="#contact">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                        <p>How connecting LLMs directly to project files and profiler logs cut debugging time by ~30%.
+                        </p>
+                        <a class="text-link" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener">Read
+                            documentation <i class="fa-solid fa-arrow-up-right-from-square"
+                                style="font-size: 0.74rem;"></i></a>
                     </article>
                     <article class="blog-card reveal">
-                        <img src="imgs/Csharp.png" alt="C# OOP" />
+                        <div class="codex-tag"><i class="fa-solid fa-layer-group"></i> TECH_DOSSIER // 02</div>
+                        <img src="Imgs/dev-pooling.svg" alt="Zero-GC Object Pooling in C#" />
                         <div class="blog-meta">Architecture - 2026</div>
                         <h3>Zero-GC Object Pooling in High-Density Mobile Games</h3>
-                        <p>Eliminating garbage collection spikes during continuous entity spawning in local multiplayer titles.</p>
-                        <a class="text-link" href="#contact">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                        <p>Eliminating garbage collection spikes during continuous entity spawning in local multiplayer
+                            titles.</p>
+                        <a class="text-link" href="https://docs.unity3d.com/Manual/performance-reusable-code.html"
+                            target="_blank" rel="noopener">Read documentation <i
+                                class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.74rem;"></i></a>
                     </article>
                     <article class="blog-card reveal">
-                        <img src="imgs/gameJamicon.PNG" alt="Game Jam" />
-                        <div class="blog-meta">Game Jam - 2026</div>
-                        <h3>From Concept to Third Prize: Rapid Prototyping at PTIT Game Jam</h3>
-                        <p>Prioritizing core gameplay loops, tight physics controls, and shipping a complete demo under strict time constraints.</p>
-                        <a class="text-link" href="#contact">Read more <i class="fa-solid fa-arrow-right"></i></a>
+                        <div class="codex-tag"><i class="fa-solid fa-brain"></i> TECH_DOSSIER // 03</div>
+                        <img src="Imgs/dev-ml-agents.svg" alt="Unity ML-Agents and Reinforcement Learning" />
+                        <div class="blog-meta">Game AI & ML - 2026</div>
+                        <h3>Training Intelligent NPCs with Unity ML-Agents & Reinforcement Learning</h3>
+                        <p>Leveraging Proximal Policy Optimization (PPO) and raycast perception sensors to build
+                            adaptive, self-learning game entities.</p>
+                        <a class="text-link" href="https://docs.unity3d.com/Manual/unity-ai.html" target="_blank"
+                            rel="noopener">Read documentation <i class="fa-solid fa-arrow-up-right-from-square"
+                                style="font-size: 0.74rem;"></i></a>
                     </article>
                 </div>
             </div>
@@ -455,9 +622,12 @@
         <section class="section" id="contact">
             <div class="container contact-grid">
                 <div class="contact-copy reveal">
+                    <span class="pill co-op-pill"><span class="dot pulse-online"></span> Ready for Co-op / Open to Mid-level Roles</span>
                     <span class="section-kicker">Get in touch</span>
                     <h2>Let's build something exceptional</h2>
-                    <p>Open to Mid-level Unity Game Developer opportunities, full-time roles, and technical game projects. Let's discuss how my game programming and AI automation skills can benefit your team.</p>
+                    <p>Open to Mid-level Unity Game Developer opportunities, full-time roles, and technical game
+                        projects. Let's discuss how my game programming and AI automation skills can benefit your team.
+                    </p>
 
                     <ul class="contact-list">
                         <li>
@@ -486,6 +656,15 @@
                 </div>
 
                 <form class="contact-form reveal" id="contactForm">
+                    <div class="form-hud-header">
+                        <span class="hud-protocol"><i class="fa-solid fa-terminal"></i> TRANSMIT_MESSAGE // V2.0</span>
+                        <div class="gamepad-keys" aria-hidden="true">
+                            <span class="key-pill key-y">Y</span>
+                            <span class="key-pill key-x">X</span>
+                            <span class="key-pill key-b">B</span>
+                            <span class="key-pill key-a">A</span>
+                        </div>
+                    </div>
                     <div class="form-row">
                         <label for="name">Name *</label>
                         <input id="name" name="name" type="text" placeholder="Enter your name" required />
@@ -500,24 +679,29 @@
                     </div>
                     <div class="form-row">
                         <label for="message">Message *</label>
-                        <textarea id="message" name="message" placeholder="What would you like to discuss?" required></textarea>
+                        <textarea id="message" name="message" placeholder="What would you like to discuss?"
+                            required></textarea>
                     </div>
                     <p class="form-message" id="formMessage" aria-live="polite"></p>
-                    <button class="btn btn-primary" type="submit">Send message <i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="btn btn-primary btn-game-send" type="submit">
+                        <span>Send Message / Start Quest</span> <i class="fa-solid fa-gamepad"></i>
+                    </button>
                 </form>
             </div>
         </section>
     </main>
 
     <!-- PROJECT DETAIL MODAL / DEDICATED VIEW (Link style: foliotuantran.netlify.app/#/project/:id) -->
-    <div class="project-detail-modal" id="projectDetailModal" role="dialog" aria-modal="true" aria-labelledby="modalProjectTitle">
+    <div class="project-detail-modal" id="projectDetailModal" role="dialog" aria-modal="true"
+        aria-labelledby="modalProjectTitle">
         <div class="modal-top-bar">
             <div class="container modal-top-inner">
                 <button class="btn-back-projects" id="btnBackProjects" type="button">
                     <i class="fa-solid fa-arrow-left"></i> Back to Minigames
                 </button>
                 <div style="display: flex; gap: 10px;">
-                    <a class="btn btn-dark" href="#contact" id="modalContactBtn" style="min-height: 40px; padding: 0 18px; font-size: 0.85rem;">
+                    <a class="btn btn-dark" href="#contact" id="modalContactBtn"
+                        style="min-height: 40px; padding: 0 18px; font-size: 0.85rem;">
                         Contact Developer
                     </a>
                 </div>
@@ -535,7 +719,8 @@
             <p>© <span id="currentYear"></span> Vu Gia Viet. All rights reserved.</p>
             <div class="footer-links">
                 <a href="mailto:vuviet1402@gmail.com" aria-label="Email"><i class="fa-solid fa-envelope"></i></a>
-                <a href="https://github.com/CauBeLapTrinh" target="_blank" rel="noopener" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="https://github.com/CauBeLapTrinh" target="_blank" rel="noopener" aria-label="GitHub"><i
+                        class="fa-brands fa-github"></i></a>
             </div>
         </div>
     </footer>

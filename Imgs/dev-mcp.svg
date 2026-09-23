@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#070a12" />
+    </linearGradient>
+    <radialGradient id="cyanGlow" cx="28%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#0284c7" stop-opacity="0.3" />
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="purpleGlow" cx="72%" cy="50%" r="40%">
+      <stop offset="0%" stop-color="#9333ea" stop-opacity="0.32" />
+      <stop offset="100%" stop-color="#9333ea" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="beamGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#c084fc" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <linearGradient id="unityCubeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <pattern id="gridPattern" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#334155" stroke-width="0.7" stroke-opacity="0.35" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bgGrad1)" />
+  <rect width="600" height="400" fill="url(#gridPattern)" />
+  <circle cx="170" cy="200" r="180" fill="url(#cyanGlow)" />
+  <circle cx="430" cy="200" r="180" fill="url(#purpleGlow)" />
+
+  <!-- Top Badges -->
+  <rect x="36" y="28" width="168" height="26" rx="13" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.6" />
+  <circle cx="50" cy="41" r="4" fill="#38bdf8" />
+  <text x="62" y="45" fill="#38bdf8" font-family="'Courier New', monospace" font-size="11" font-weight="bold" letter-spacing="1">UNITY + MCP TOOL</text>
+
+  <rect x="420" y="28" width="144" height="26" rx="13" fill="#142e1d" stroke="#4ade80" stroke-width="1.2" stroke-opacity="0.6" />
+  <circle cx="434" cy="41" r="4" fill="#4ade80" />
+  <text x="446" y="45" fill="#4ade80" font-family="'Courier New', monospace" font-size="11" font-weight="bold" letter-spacing="1">-30% DEBUG TIME</text>
+
+  <!-- Connecting Data Pipeline / Bus -->
+  <path d="M 230 180 L 370 180" stroke="url(#beamGrad)" stroke-width="3" stroke-dasharray="6,4" filter="url(#glow)" />
+  <path d="M 230 220 L 370 220" stroke="url(#beamGrad)" stroke-width="3" stroke-dasharray="6,4" filter="url(#glow)" />
+  
+  <!-- Central Pulse Packet -->
+  <rect x="275" y="170" width="50" height="60" rx="8" fill="#1e1b4b" stroke="#c084fc" stroke-width="1.8" />
+  <text x="300" y="196" fill="#c084fc" font-family="sans-serif" font-size="9" font-weight="bold" text-anchor="middle">MCP</text>
+  <text x="300" y="214" fill="#a78bfa" font-family="sans-serif" font-size="8" text-anchor="middle">JSON-RPC</text>
+
+  <!-- Data Flow Arrows -->
+  <polygon points="262,176 270,180 262,184" fill="#38bdf8" />
+  <polygon points="338,216 330,220 338,224" fill="#f43f5e" />
+
+  <!-- LEFT: Isometric Unity 3D Cube -->
+  <g transform="translate(140, 200)">
+    <!-- Top Face -->
+    <polygon points="0,-60 52,-30 0,0 -52,-30" fill="#334155" stroke="#38bdf8" stroke-width="2" />
+    <!-- Left Face -->
+    <polygon points="-52,-30 0,0 0,60 -52,30" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+    <!-- Right Face -->
+    <polygon points="0,0 52,-30 52,30 0,60" fill="#0f172a" stroke="#38bdf8" stroke-width="2" />
+    <!-- Core Emblem -->
+    <circle cx="0" cy="0" r="16" fill="#0284c7" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1.5" filter="url(#glow)" />
+    <!-- Three axes lines -->
+    <line x1="0" y1="0" x2="0" y2="-22" stroke="#38bdf8" stroke-width="2.5" />
+    <line x1="0" y1="0" x2="-20" y2="12" stroke="#38bdf8" stroke-width="2.5" />
+    <line x1="0" y1="0" x2="20" y2="12" stroke="#38bdf8" stroke-width="2.5" />
+    <text x="0" y="86" fill="#94a3b8" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="1">UNITY RUNTIME</text>
+  </g>
+
+  <!-- RIGHT: AI Neural Graph / LLM Brain -->
+  <g transform="translate(460, 200)">
+    <!-- Node Connectors -->
+    <line x1="-40" y1="-35" x2="0" y2="-10" stroke="#a855f7" stroke-width="1.8" stroke-opacity="0.6" />
+    <line x1="-40" y1="35" x2="0" y2="10" stroke="#a855f7" stroke-width="1.8" stroke-opacity="0.6" />
+    <line x1="0" y1="-10" x2="40" y2="-40" stroke="#c084fc" stroke-width="1.8" stroke-opacity="0.6" />
+    <line x1="0" y1="10" x2="40" y2="40" stroke="#c084fc" stroke-width="1.8" stroke-opacity="0.6" />
+    <line x1="0" y1="-10" x2="0" y2="10" stroke="#c084fc" stroke-width="1.8" stroke-opacity="0.6" />
+    <line x1="40" y1="-40" x2="40" y2="40" stroke="#e879f9" stroke-width="1.5" stroke-opacity="0.4" />
+
+    <!-- Nodes -->
+    <circle cx="-40" cy="-35" r="9" fill="#1e1b4b" stroke="#c084fc" stroke-width="2" filter="url(#glow)" />
+    <circle cx="-40" cy="35" r="9" fill="#1e1b4b" stroke="#c084fc" stroke-width="2" filter="url(#glow)" />
+    <circle cx="0" cy="-10" r="14" fill="#581c87" stroke="#e879f9" stroke-width="2.5" filter="url(#glow)" />
+    <circle cx="0" cy="10" r="14" fill="#581c87" stroke="#e879f9" stroke-width="2.5" filter="url(#glow)" />
+    <circle cx="40" cy="-40" r="8" fill="#1e1b4b" stroke="#f472b6" stroke-width="2" />
+    <circle cx="40" cy="40" r="8" fill="#1e1b4b" stroke="#f472b6" stroke-width="2" />
+
+    <!-- AI Core Icon -->
+    <text x="0" y="5" fill="#ffffff" font-family="sans-serif" font-size="11" font-weight="900" text-anchor="middle">AI</text>
+    <text x="0" y="86" fill="#94a3b8" font-family="sans-serif" font-size="12" font-weight="bold" text-anchor="middle" letter-spacing="1">LLM AGENT CONTEXT</text>
+  </g>
+
+  <!-- Bottom Tech Footer Bar -->
+  <rect x="40" y="338" width="520" height="34" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1" />
+  <text x="56" y="359" fill="#64748b" font-family="sans-serif" font-size="11" font-weight="600">PROTOCOL:</text>
+  <text x="124" y="359" fill="#38bdf8" font-family="sans-serif" font-size="11" font-weight="700">Model Context Protocol (MCP)</text>
+  <text x="320" y="359" fill="#64748b" font-family="sans-serif" font-size="11" font-weight="600">CAPABILITIES:</text>
+  <text x="406" y="359" fill="#c084fc" font-family="sans-serif" font-size="11" font-weight="700">Profiler, CodeGen, Automated Tests</text>
+</svg>

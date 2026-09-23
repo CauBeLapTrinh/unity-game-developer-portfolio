@@ -11,8 +11,18 @@
             filtered.forEach(game => {
                 const card = document.createElement("article");
                 card.className = "minigame-card reveal show";
+
+                const isGameJam = game.category === "gamejam";
+                const badgeUrl = isGameJam 
+                    ? (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026")
+                    : (game.category === "2-4-player" 
+                        ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
+                        : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
+                const badgeIcon = isGameJam ? "fa-solid fa-trophy" : "fa-brands fa-google-play";
+                const badgeTitle = isGameJam ? "View on GitHub / Competition Award" : "View on Google Play";
+
                 card.innerHTML = `
-                    <a class="card-badge-top" href="${game.category === '2-4-player' ? 'https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi' : 'https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi'}" target="_blank" rel="noopener" title="View on Google Play" onclick="event.stopPropagation()"><i class="fa-brands fa-google-play"></i> ${game.downloads}</a>
+                    <a class="card-badge-top" href="${badgeUrl}" target="_blank" rel="noopener" title="${badgeTitle}" onclick="event.stopPropagation()"><i class="${badgeIcon}"></i> ${game.downloads}</a>
                     <div class="minigame-thumb">
                         <img src="${game.image}" alt="${game.title}"
                              onerror="handleImageFallback(this, '${game.fallbackImage}', '${game.title}', '${game.icon}', '${game.gradient}')" />
@@ -67,7 +77,7 @@
         const btnBackProjects = document.getElementById("btnBackProjects");
 
         function openProjectDetail(gameId, updateHash = true) {
-            const game = minigamesData.find(g => g.id === gameId);
+            const game = minigamesData.find(g => g.id === gameId || (gameId === "death-loop" && g.id === "exima"));
             if (!game) return;
 
             if (updateHash) {
@@ -120,11 +130,20 @@
                 `;
             }
 
+            const isGameJam = game.category === "gamejam";
+            const collectionUrl = isGameJam 
+                ? (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026") 
+                : (game.category === "2-4-player" 
+                    ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
+                    : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
+            const collectionTitle = isGameJam ? "Open GitHub Repository" : "Open on Google Play";
+            const downloadTagIcon = isGameJam ? "fa-solid fa-trophy" : "fa-solid fa-download";
+
             modalContentContainer.innerHTML = `
                 <div class="project-hero-header">
                     <div class="project-meta-badges">
-                        <a class="collection-tag" href="${game.category === '2-4-player' ? 'https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi' : 'https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi'}" target="_blank" rel="noopener" title="Open on Google Play"><i class="fa-solid fa-layer-group"></i> ${game.collection} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; margin-left: 4px;"></i></a>
-                        <span class="downloads-tag"><i class="fa-solid fa-download"></i> ${game.downloads}</span>
+                        <a class="collection-tag" href="${collectionUrl}" target="_blank" rel="noopener" title="${collectionTitle}"><i class="fa-solid fa-layer-group"></i> ${game.collection} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; margin-left: 4px;"></i></a>
+                        <span class="downloads-tag"><i class="${downloadTagIcon}"></i> ${game.downloads}</span>
                     </div>
                     <h1 id="modalProjectTitle">${game.title}</h1>
                     <p class="project-subtitle">${game.shortDesc}</p>
@@ -202,23 +221,64 @@
 
                     <!-- Gameplay Media Section -->
                     <div class="detail-section-card">
-                        <h3><i class="fa-solid fa-images"></i> Gameplay Media</h3>
-                        <p style="color: var(--muted); font-size: 0.95rem; margin-bottom: 14px;">
-                            Screenshots and visual assets will be rendered from <code>Imgs/MiniGame/${game.id}-screen.png</code>.
-                        </p>
+                        <h3><i class="${game.youtubeVideoId ? 'fa-solid fa-film' : 'fa-solid fa-images'}"></i> Gameplay ${game.youtubeVideoId ? 'Video & Screenshots' : 'Media'}</h3>
                         <div class="media-gallery-grid">
-                            <div class="gallery-item">
-                                <img src="${game.image}" alt="${game.title} visual"
-                                     onerror="this.src='${game.fallbackImage}'; this.onerror=function(){ this.parentElement.innerHTML='<div class=\'gallery-placeholder\'><i class=\'fa-solid fa-gamepad\'></i><strong>Gameplay Screenshot 1</strong><span>(Drop ${game.id}-1.png into Imgs/MiniGame)</span></div>'; }" />
-                            </div>
-                            <div class="gallery-item">
-                                <div class="gallery-placeholder">
-                                    <i class="fa-solid fa-film"></i>
-                                    <strong>Gameplay Preview</strong>
-                                    <span>Screenshots placed in <code>Imgs/MiniGame</code> will display here</span>
+                            ${game.youtubeVideoId ? `
+                                <div class="gallery-item video-gallery-item" id="videoSlot-${game.id}">
+                                    ${window.location.protocol === 'file:' ? `
+                                        <div class="video-preview-card" onclick="window.open('https://www.youtube.com/watch?v=${game.youtubeVideoId}', '_blank')" title="Mở xem trên YouTube">
+                                            <img class="video-thumb" src="https://img.youtube.com/vi/${game.youtubeVideoId}/hqdefault.jpg" alt="${game.title} YouTube Gameplay" />
+                                            <div class="video-preview-overlay">
+                                                <div class="video-preview-badge"><i class="fa-brands fa-youtube"></i> YouTube Gameplay</div>
+                                                <div class="video-play-btn-circle"><i class="fa-solid fa-play"></i></div>
+                                                <div class="video-preview-bottom">
+                                                    <span class="video-preview-title">${game.title} - Official Gameplay</span>
+                                                    <span class="video-preview-hint"><i class="fa-solid fa-arrow-up-right-from-square"></i> Bấm để xem trực tiếp trên YouTube</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ` : `
+                                        <iframe src="https://www.youtube-nocookie.com/embed/${game.youtubeVideoId}?rel=0"
+                                                title="${game.title} Gameplay Video"
+                                                referrerpolicy="strict-origin-when-cross-origin"
+                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                                allowfullscreen></iframe>
+                                    `}
+                                </div>
+                                <div class="gallery-item">
+                                    <img src="${game.image}" alt="${game.title} visual"
+                                         onerror="this.src='${game.fallbackImage}';" />
+                                </div>
+                            ` : `
+                                <div class="gallery-item">
+                                    <img src="${game.image}" alt="${game.title} visual"
+                                         onerror="this.src='${game.fallbackImage}';" />
+                                </div>
+                                <div class="gallery-item">
+                                    ${game.secondaryImage ? `
+                                        <div style="background: ${game.gradient}; display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; width: 100%; padding: 20px; box-sizing: border-box;">
+                                            <img src="${game.secondaryImage}" alt="${game.title} icon" style="max-height: 75%; max-width: 75%; object-fit: contain; filter: drop-shadow(0 10px 24px rgba(0,0,0,0.55));" />
+                                            <span style="color: #ffffff; font-weight: 700; font-size: 0.85rem; margin-top: 10px; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.9;">Game Icon & Character Mask</span>
+                                        </div>
+                                    ` : `
+                                    <div class="gallery-placeholder" style="background: ${game.gradient}; color: #ffffff;">
+                                        <i class="${game.icon}" style="color: #ffffff; opacity: 0.95;"></i>
+                                        <strong style="color: #ffffff; font-size: 1.15rem; margin-top: 6px;">${game.title}</strong>
+                                        <span style="color: rgba(255, 255, 255, 0.88); font-size: 0.88rem; margin-top: 4px;">${game.collection}</span>
+                                        <span style="color: #bef264; font-weight: 800; font-size: 0.85rem; margin-top: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="${isGameJam ? 'fa-solid fa-trophy' : 'fa-brands fa-google-play'}"></i> ${game.downloads}</span>
+                                    </div>
+                                    `}
+                                </div>
+                            `}
+                        </div>
+                        ${(game.youtubeVideoId && window.location.protocol === 'file:') ? `
+                            <div class="video-embed-notice">
+                                <i class="fa-solid fa-circle-info"></i>
+                                <div>
+                                    <strong>Giao thức file local (file://):</strong> Trình duyệt chặn gửi thông tin <code>Referer</code> khi mở trực tiếp từ file trên máy, YouTube sẽ phản hồi <em>Error 153</em>. Hãy bấm vào khung video để xem ngay trên YouTube, hoặc bấm <button type="button" class="btn-try-embed" onclick="window.loadEmbedPlayer('videoSlot-${game.id}', '${game.youtubeVideoId}', '${game.title}')">Thử tải Player trực tiếp</button>. Khi website được host online hoặc chạy qua Local Server, video sẽ tự động phát bình thường.
                                 </div>
                             </div>
-                        </div>
+                        ` : ''}
                     </div>
                 </div>
             `;
@@ -231,10 +291,28 @@
         function closeProjectDetail() {
             projectDetailModal.classList.remove("active");
             document.body.style.overflow = "";
+            // Pause any playing videos by refreshing iframe src
+            const iframes = modalContentContainer.querySelectorAll("iframe");
+            iframes.forEach(iframe => {
+                iframe.src = iframe.src;
+            });
             if (window.location.hash.startsWith("#/project/")) {
                 window.location.hash = "#minigames";
             }
         }
+
+        // Global helper to manually load embedded iframe player on demand
+        window.loadEmbedPlayer = function(slotId, videoId, title) {
+            const slot = document.getElementById(slotId);
+            if (!slot) return;
+            slot.innerHTML = `
+                <iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0"
+                        title="${title} Gameplay Video"
+                        referrerpolicy="strict-origin-when-cross-origin"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen></iframe>
+            `;
+        };
 
         btnBackProjects.addEventListener("click", closeProjectDetail);
 
@@ -413,3 +491,261 @@ function showToast(message, icon = "fa-circle-check") {
         toast.classList.remove("show");
     }, 3800);
 }
+
+/* ========================================================
+   DYNAMIC GAME DEV PARTICLES & PHYSICS RAYCAST CANVAS
+   ======================================================== */
+(function initGameDevCanvas() {
+    const canvas = document.getElementById("gameDevCanvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    let width = 0;
+    let height = 0;
+    let particles = [];
+    let animationFrameId = null;
+    let isTabActive = true;
+
+    // Mouse position & interactive raycast state
+    const mouse = {
+        x: -1000,
+        y: -1000,
+        targetX: -1000,
+        targetY: -1000,
+        active: false,
+        radius: 140
+    };
+
+    function resize() {
+        const dpr = Math.min(window.devicePixelRatio || 1, 2);
+        width = window.innerWidth;
+        height = window.innerHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0); // reset scale
+        ctx.scale(dpr, dpr);
+        initParticles();
+    }
+
+    function getParticleCount() {
+        if (width < 768) return 26;
+        if (width < 1200) return 38;
+        return 54;
+    }
+
+    function createParticle() {
+        const type = Math.floor(Math.random() * 3); // 0: Entity node, 1: Gizmo crosshair (+), 2: Diamond collider
+        return {
+            x: Math.random() * width,
+            y: Math.random() * height,
+            vx: (Math.random() - 0.5) * 0.55,
+            vy: (Math.random() - 0.5) * 0.55,
+            size: 2.2 + Math.random() * 2.4,
+            type: type,
+            pulse: Math.random() * Math.PI * 2,
+            pulseSpeed: 0.02 + Math.random() * 0.03,
+            colorVariant: Math.random() > 0.4 ? "primary" : "accent"
+        };
+    }
+
+    function initParticles() {
+        const count = getParticleCount();
+        particles = [];
+        for (let i = 0; i < count; i++) {
+            particles.push(createParticle());
+        }
+    }
+
+    window.addEventListener("mousemove", (e) => {
+        mouse.targetX = e.clientX;
+        mouse.targetY = e.clientY;
+        mouse.active = true;
+    }, { passive: true });
+
+    window.addEventListener("mouseleave", () => {
+        mouse.active = false;
+        mouse.targetX = -1000;
+        mouse.targetY = -1000;
+    });
+
+    window.addEventListener("touchmove", (e) => {
+        if (e.touches.length > 0) {
+            mouse.targetX = e.touches[0].clientX;
+            mouse.targetY = e.touches[0].clientY;
+            mouse.active = true;
+        }
+    }, { passive: true });
+
+    window.addEventListener("touchend", () => {
+        mouse.active = false;
+        mouse.targetX = -1000;
+        mouse.targetY = -1000;
+    });
+
+    function draw() {
+        ctx.clearRect(0, 0, width, height);
+
+        const isDark = document.body.classList.contains("dark");
+        const primaryColor = isDark ? "rgba(96, 165, 250, " : "rgba(37, 99, 235, ";
+        const accentColor = isDark ? "rgba(190, 242, 100, " : "rgba(132, 204, 22, ";
+
+        // Smooth mouse lerp
+        if (mouse.active) {
+            mouse.x += (mouse.targetX - mouse.x) * 0.15;
+            mouse.y += (mouse.targetY - mouse.y) * 0.15;
+
+            // Reticle ring around mouse cursor
+            ctx.beginPath();
+            ctx.arc(mouse.x, mouse.y, 14, 0, Math.PI * 2);
+            ctx.strokeStyle = isDark ? "rgba(96, 165, 250, 0.22)" : "rgba(37, 99, 235, 0.18)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+
+            // Center targeting crosshair
+            ctx.beginPath();
+            ctx.moveTo(mouse.x - 4, mouse.y);
+            ctx.lineTo(mouse.x + 4, mouse.y);
+            ctx.moveTo(mouse.x, mouse.y - 4);
+            ctx.lineTo(mouse.x, mouse.y + 4);
+            ctx.strokeStyle = isDark ? "rgba(190, 242, 100, 0.4)" : "rgba(37, 99, 235, 0.3)";
+            ctx.lineWidth = 1;
+            ctx.stroke();
+        }
+
+        const maxLineDist = 115;
+        const maxMouseDist = mouse.radius;
+
+        // Draw connections (DistanceJoints / Mesh Triangulation)
+        for (let i = 0; i < particles.length; i++) {
+            const p1 = particles[i];
+
+            for (let j = i + 1; j < particles.length; j++) {
+                const p2 = particles[j];
+                const dx = p1.x - p2.x;
+                const dy = p1.y - p2.y;
+                const dist = Math.hypot(dx, dy);
+
+                if (dist < maxLineDist) {
+                    const alpha = (1 - dist / maxLineDist) * (isDark ? 0.22 : 0.14);
+                    ctx.beginPath();
+                    ctx.moveTo(p1.x, p1.y);
+                    ctx.lineTo(p2.x, p2.y);
+                    ctx.strokeStyle = primaryColor + alpha + ")";
+                    ctx.lineWidth = 0.8;
+                    ctx.stroke();
+                }
+            }
+
+            // Raycast connection from mouse to nearby nodes
+            if (mouse.active) {
+                const mdx = p1.x - mouse.x;
+                const mdy = p1.y - mouse.y;
+                const mdist = Math.hypot(mdx, mdy);
+
+                if (mdist < maxMouseDist) {
+                    const mAlpha = (1 - mdist / maxMouseDist) * (isDark ? 0.45 : 0.28);
+                    ctx.beginPath();
+                    ctx.moveTo(mouse.x, mouse.y);
+                    ctx.lineTo(p1.x, p1.y);
+                    ctx.strokeStyle = accentColor + mAlpha + ")";
+                    ctx.lineWidth = 1.2;
+                    ctx.stroke();
+
+                    // Soft physics impulse away from cursor
+                    const force = (1 - mdist / maxMouseDist) * 0.08;
+                    p1.vx += (mdx / mdist) * force;
+                    p1.vy += (mdy / mdist) * force;
+                }
+            }
+        }
+
+        // Draw particles
+        for (let i = 0; i < particles.length; i++) {
+            const p = particles[i];
+
+            // Speed damping
+            p.vx *= 0.985;
+            p.vy *= 0.985;
+
+            // Gentle ambient drift
+            if (Math.abs(p.vx) < 0.1) p.vx += (Math.random() - 0.5) * 0.05;
+            if (Math.abs(p.vy) < 0.1) p.vy += (Math.random() - 0.5) * 0.05;
+
+            p.x += p.vx;
+            p.y += p.vy;
+
+            // Boundary bounce
+            if (p.x < 0) { p.x = 0; p.vx *= -1; }
+            else if (p.x > width) { p.x = width; p.vx *= -1; }
+            if (p.y < 0) { p.y = 0; p.vy *= -1; }
+            else if (p.y > height) { p.y = height; p.vy *= -1; }
+
+            p.pulse += p.pulseSpeed;
+            const currentSize = p.size + Math.sin(p.pulse) * 0.8;
+            const baseAlpha = (isDark ? 0.55 : 0.4) + Math.sin(p.pulse) * 0.15;
+            const colorPrefix = p.colorVariant === "primary" ? primaryColor : accentColor;
+
+            if (p.type === 0) {
+                // Circle entity
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, currentSize, 0, Math.PI * 2);
+                ctx.fillStyle = colorPrefix + baseAlpha + ")";
+                ctx.fill();
+            } else if (p.type === 1) {
+                // Gizmo crosshair (+)
+                const arm = currentSize * 1.5;
+                ctx.beginPath();
+                ctx.moveTo(p.x - arm, p.y);
+                ctx.lineTo(p.x + arm, p.y);
+                ctx.moveTo(p.x, p.y - arm);
+                ctx.lineTo(p.x, p.y + arm);
+                ctx.strokeStyle = colorPrefix + (baseAlpha + 0.1) + ")";
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+            } else {
+                // Diamond collider
+                const s = currentSize * 1.3;
+                ctx.beginPath();
+                ctx.moveTo(p.x, p.y - s);
+                ctx.lineTo(p.x + s, p.y);
+                ctx.lineTo(p.x, p.y + s);
+                ctx.lineTo(p.x - s, p.y);
+                ctx.closePath();
+                ctx.fillStyle = colorPrefix + (baseAlpha * 0.8) + ")";
+                ctx.fill();
+                ctx.strokeStyle = colorPrefix + baseAlpha + ")";
+                ctx.lineWidth = 0.8;
+                ctx.stroke();
+            }
+        }
+    }
+
+    function loop() {
+        if (isTabActive) {
+            draw();
+            animationFrameId = requestAnimationFrame(loop);
+        }
+    }
+
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden) {
+            isTabActive = false;
+            if (animationFrameId) cancelAnimationFrame(animationFrameId);
+        } else {
+            isTabActive = true;
+            loop();
+        }
+    });
+
+    window.addEventListener("resize", () => {
+        resize();
+    });
+
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        resize();
+        draw();
+    } else {
+        resize();
+        loop();
+    }
+})();

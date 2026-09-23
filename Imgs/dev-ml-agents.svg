@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#041819" />
+      <stop offset="50%" stop-color="#0a2a29" />
+      <stop offset="100%" stop-color="#05121b" />
+    </linearGradient>
+    <radialGradient id="cyanGlow3" cx="28%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.28" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="emeraldGlow3" cx="72%" cy="50%" r="45%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0" />
+    </radialGradient>
+    <filter id="glow3" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+    <pattern id="gridPattern3" width="30" height="30" patternUnits="userSpaceOnUse">
+      <path d="M 30 0 L 0 0 0 30" fill="none" stroke="#0e3a39" stroke-width="0.7" stroke-opacity="0.45" />
+    </pattern>
+  </defs>
+
+  <!-- Background -->
+  <rect width="600" height="400" fill="url(#bgGrad3)" />
+  <rect width="600" height="400" fill="url(#gridPattern3)" />
+  <circle cx="170" cy="190" r="180" fill="url(#cyanGlow3)" />
+  <circle cx="430" cy="190" r="180" fill="url(#emeraldGlow3)" />
+
+  <!-- Top Badges -->
+  <rect x="36" y="28" width="180" height="26" rx="13" fill="#042f2e" stroke="#14b8a6" stroke-width="1.2" stroke-opacity="0.7" />
+  <circle cx="50" cy="41" r="4" fill="#2dd4bf" />
+  <text x="62" y="45" fill="#2dd4bf" font-family="'Courier New', monospace" font-size="11" font-weight="bold" letter-spacing="1">UNITY ML-AGENTS</text>
+
+  <rect x="390" y="28" width="174" height="26" rx="13" fill="#082f49" stroke="#38bdf8" stroke-width="1.2" stroke-opacity="0.7" />
+  <circle cx="404" cy="41" r="4" fill="#38bdf8" />
+  <text x="416" y="45" fill="#38bdf8" font-family="'Courier New', monospace" font-size="11" font-weight="bold" letter-spacing="1">DEEP RL (PPO TRAINER)</text>
+
+  <!-- LEFT: Agent with Raycast Vision Cones -->
+  <g transform="translate(160, 190)">
+    <!-- Radar Sweep Arc -->
+    <path d="M -40,-70 A 90 90 0 0 1 70,-40" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-dasharray="4,4" opacity="0.6" />
+    <path d="M -20,-45 A 60 60 0 0 1 45,-20" fill="none" stroke="#2dd4bf" stroke-width="1.5" stroke-dasharray="3,3" opacity="0.7" />
+
+    <!-- Sensory Raycast Beams -->
+    <line x1="0" y1="0" x2="-80" y2="-75" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.8" />
+    <line x1="0" y1="0" x2="-40" y2="-100" stroke="#38bdf8" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.85" />
+    <line x1="0" y1="0" x2="30" y2="-95" stroke="#22d3ee" stroke-width="2" stroke-dasharray="4,3" />
+    <line x1="0" y1="0" x2="90" y2="-60" stroke="#34d399" stroke-width="2" stroke-dasharray="4,3" filter="url(#glow3)" />
+    <line x1="0" y1="0" x2="110" y2="-15" stroke="#a3e635" stroke-width="2" stroke-dasharray="4,3" />
+
+    <!-- Hit Detection Nodes on Raycasts -->
+    <circle cx="-80" cy="-75" r="4" fill="#ef4444" />
+    <circle cx="90" cy="-60" r="5" fill="#34d399" filter="url(#glow3)" />
+    <circle cx="110" cy="-15" r="4" fill="#bef264" />
+
+    <!-- Vision Cone FOV Polygon -->
+    <polygon points="0,0 -80,-75 -40,-100 30,-95 90,-60 110,-15" fill="#06b6d4" fill-opacity="0.12" />
+
+    <!-- Autonomous Agent Core Avatar -->
+    <circle cx="0" cy="0" r="30" fill="#0f172a" stroke="#22d3ee" stroke-width="2.5" filter="url(#glow3)" />
+    <!-- Agent Inner Icon (Compass / Vision Core) -->
+    <polygon points="0,-16 6,-4 16,0 6,4 0,16 -6,4 -16,0 -6,-4" fill="#22d3ee" />
+    <circle cx="0" cy="0" r="4" fill="#ffffff" />
+
+    <text x="0" y="52" fill="#e2e8f0" font-family="sans-serif" font-size="11" font-weight="bold" text-anchor="middle">SENSORY AGENT</text>
+    <text x="0" y="68" fill="#64748b" font-family="'Courier New', monospace" font-size="9" text-anchor="middle">RaycastPerception3D</text>
+  </g>
+
+  <!-- CENTER-RIGHT: Reinforcement Learning Loop & Policy Network -->
+  <g transform="translate(420, 190)">
+    <!-- Neural Layers Box -->
+    <rect x="-80" y="-85" width="160" height="150" rx="12" fill="#0f172a" stroke="#059669" stroke-width="1.5" />
+    <text x="0" y="-66" fill="#34d399" font-family="'Courier New', monospace" font-size="10" font-weight="bold" text-anchor="middle">POLICY NETWORK (PPO)</text>
+
+    <!-- Layer 1: Inputs (Observations) -->
+    <circle cx="-50" cy="-40" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="-50" cy="-15" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="-50" cy="10" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="-50" cy="35" r="6" fill="#0284c7" stroke="#38bdf8" stroke-width="1.5" />
+
+    <!-- Layer 2: Hidden -->
+    <circle cx="0" cy="-28" r="6" fill="#059669" stroke="#34d399" stroke-width="1.5" />
+    <circle cx="0" cy="-3" r="6" fill="#059669" stroke="#34d399" stroke-width="1.5" />
+    <circle cx="0" cy="22" r="6" fill="#059669" stroke="#34d399" stroke-width="1.5" />
+
+    <!-- Layer 3: Action Outputs -->
+    <circle cx="50" cy="-16" r="6" fill="#ca8a04" stroke="#facc15" stroke-width="1.5" />
+    <circle cx="50" cy="10" r="6" fill="#ca8a04" stroke="#facc15" stroke-width="1.5" />
+
+    <!-- Synaptic Connectors -->
+    <line x1="-44" y1="-40" x2="-6" y2="-28" stroke="#38bdf8" stroke-width="1" opacity="0.5" />
+    <line x1="-44" y1="-15" x2="-6" y2="-3" stroke="#38bdf8" stroke-width="1" opacity="0.5" />
+    <line x1="-44" y1="10" x2="-6" y2="22" stroke="#38bdf8" stroke-width="1" opacity="0.5" />
+    <line x1="-6" y1="-28" x2="44" y2="-16" stroke="#34d399" stroke-width="1" opacity="0.6" />
+    <line x1="-6" y1="-3" x2="44" y2="10" stroke="#34d399" stroke-width="1" opacity="0.6" />
+    <line x1="-6" y1="22" x2="44" y2="10" stroke="#34d399" stroke-width="1" opacity="0.6" />
+
+    <!-- Labels under layers -->
+    <text x="-50" y="55" fill="#64748b" font-family="sans-serif" font-size="8" text-anchor="middle">OBS</text>
+    <text x="0" y="55" fill="#64748b" font-family="sans-serif" font-size="8" text-anchor="middle">DENSE</text>
+    <text x="50" y="55" fill="#64748b" font-family="sans-serif" font-size="8" text-anchor="middle">ACT</text>
+
+    <!-- Reward Floating Badge -->
+    <rect x="-45" y="80" width="90" height="24" rx="12" fill="#14532d" stroke="#bef264" stroke-width="1.2" />
+    <text x="0" y="96" fill="#bef264" font-family="'Courier New', monospace" font-size="11" font-weight="bold" text-anchor="middle">+1.0 REWARD</text>
+  </g>
+
+  <!-- Bottom Tech Footer Bar -->
+  <rect x="40" y="338" width="520" height="34" rx="8" fill="#111827" stroke="#1f2937" stroke-width="1" />
+  <text x="56" y="359" fill="#64748b" font-family="sans-serif" font-size="11" font-weight="600">TOOLKIT:</text>
+  <text x="124" y="359" fill="#2dd4bf" font-family="sans-serif" font-size="11" font-weight="700">Unity ML-Agents (PyTorch)</text>
+  <text x="326" y="359" fill="#64748b" font-family="sans-serif" font-size="11" font-weight="600">BEHAVIORS:</text>
+  <text x="410" y="359" fill="#bef264" font-family="sans-serif" font-size="11" font-weight="700">Obstacle Avoidance, Flocking</text>
+</svg>
