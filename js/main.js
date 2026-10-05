@@ -452,16 +452,56 @@
         const statsEl = document.getElementById("stats");
         if (statsEl) statsObserver.observe(statsEl);
 
-        // Contact form mock submission
-        contactForm.addEventListener("submit", (event) => {
+        // Contact form Formspree AJAX submission
+        contactForm.addEventListener("submit", async (event) => {
             event.preventDefault();
-            formMessage.textContent = "Sending message...";
+            const submitBtn = contactForm.querySelector("button[type='submit']");
+            const originalBtnContent = submitBtn ? submitBtn.innerHTML : "Send Message";
 
-            setTimeout(() => {
-                formMessage.textContent = "Thank you! Your message has been sent successfully.";
-                showToast("Message sent successfully! Vu Gia Viet will reply soon.");
-                contactForm.reset();
-            }, 1000);
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = '<span>Transmitting...</span> <i class="fa-solid fa-spinner fa-spin"></i>';
+            }
+            formMessage.textContent = "Connecting to mail server & transmitting message...";
+            formMessage.style.color = "var(--muted)";
+
+            const formData = new FormData(contactForm);
+
+            try {
+                const response = await fetch("https://formspree.io/f/xoejagpb", {
+                    method: "POST",
+                    body: formData,
+                    headers: {
+                        "Accept": "application/json"
+                    }
+                });
+
+                if (response.ok) {
+                    formMessage.textContent = "Thank you! Your message has been sent successfully to Vu Gia Viet.";
+                    formMessage.style.color = "#10b981";
+                    showToast("Message transmitted successfully! I will reply soon.", "fa-circle-check");
+                    contactForm.reset();
+                } else {
+                    const data = await response.json().catch(() => null);
+                    let errorMsg = "Oops! Could not send message.";
+                    if (data && data.errors && data.errors.length > 0) {
+                        errorMsg = data.errors.map(err => err.message).join(", ");
+                    }
+                    formMessage.textContent = errorMsg + " Please try again or email directly to vuviet1402@gmail.com";
+                    formMessage.style.color = "#ef4444";
+                    showToast("Transmission error. Please try again.", "fa-circle-exclamation");
+                }
+            } catch (error) {
+                console.error("Formspree submit error:", error);
+                formMessage.textContent = "Network error. Please try again or email directly to vuviet1402@gmail.com";
+                formMessage.style.color = "#ef4444";
+                showToast("Network error during transmission.", "fa-triangle-exclamation");
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalBtnContent;
+                }
+            }
         });
 
         // Initialize minigames and hash check on startup

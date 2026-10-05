@@ -2443,6 +2443,13 @@
             box-shadow: 0 12px 28px rgba(37, 99, 235, 0.35);
         }
 
+        .btn-game-send:disabled {
+            opacity: 0.75;
+            cursor: not-allowed;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
         .form-row {
             display: grid;
             gap: 8px;
