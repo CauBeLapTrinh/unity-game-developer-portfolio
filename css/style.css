@@ -1283,6 +1283,46 @@
             position: relative;
         }
 
+        /* Portrait screenshot gallery (e.g. Royal Puzzle) */
+        .media-gallery-grid.media-gallery-portrait {
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+        }
+
+        .media-gallery-portrait .gallery-item-portrait {
+            aspect-ratio: 49 / 79;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .media-gallery-portrait .gallery-item-portrait img {
+            flex: 1;
+            min-height: 0;
+        }
+
+        .media-gallery-portrait .gallery-item-portrait[data-fit="contain"] img {
+            object-fit: contain;
+            background: #0b1220;
+        }
+
+        .media-gallery-portrait figcaption {
+            padding: 8px 10px;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--muted, #94a3b8);
+            background: var(--surface-2);
+        }
+
+        @media (max-width: 900px) {
+            .media-gallery-grid.media-gallery-portrait {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
         .gallery-item img,
         .gallery-item iframe {
             width: 100%;

@@ -13,16 +13,17 @@
                 card.className = "minigame-card reveal show";
 
                 const isGameJam = game.category === "gamejam";
-                const badgeUrl = isGameJam 
-                    ? (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026")
+                const isStandalone = game.category === "anti-stress";
+                const badgeUrl = (isGameJam || isStandalone)
+                    ? (isStandalone ? game.storeUrl : (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026"))
                     : (game.category === "2-4-player" 
                         ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
                         : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
-                const badgeIcon = isGameJam ? "fa-solid fa-trophy" : "fa-brands fa-google-play";
-                const badgeTitle = isGameJam ? "View on GitHub / Competition Award" : "View on Google Play";
+                const badgeIcon = isGameJam ? "fa-solid fa-trophy" : (isStandalone ? "fa-solid fa-flask" : "fa-brands fa-google-play");
+                const badgeTitle = isGameJam ? "View on GitHub / Competition Award" : (isStandalone ? "View on GitHub" : "View on Google Play");
 
                 card.innerHTML = `
-                    <a class="card-badge-top" href="${badgeUrl}" target="_blank" rel="noopener" title="${badgeTitle}" onclick="event.stopPropagation()"><i class="${badgeIcon}"></i> ${game.downloads}</a>
+                    ${badgeUrl ? `<a class="card-badge-top" href="${badgeUrl}" target="_blank" rel="noopener" title="${badgeTitle}" onclick="event.stopPropagation()"><i class="${badgeIcon}"></i> ${game.downloads}</a>` : `<span class="card-badge-top"><i class="${badgeIcon}"></i> ${game.downloads}</span>`}
                     <div class="minigame-thumb">
                         <img src="${game.image}" alt="${game.title}"
                              onerror="handleImageFallback(this, '${game.fallbackImage}', '${game.title}', '${game.icon}', '${game.gradient}')" />
@@ -143,18 +144,26 @@
             }
 
             const isGameJam = game.category === "gamejam";
-            const collectionUrl = isGameJam 
-                ? (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026") 
+            const isStandalone = game.category === "anti-stress";
+            const collectionUrl = (isGameJam || isStandalone)
+                ? (isStandalone ? game.storeUrl : (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026")) 
                 : (game.category === "2-4-player" 
                     ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
                     : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
-            const collectionTitle = isGameJam ? "Open GitHub Repository" : "Open on Google Play";
-            const downloadTagIcon = isGameJam ? "fa-solid fa-trophy" : "fa-solid fa-download";
+            const collectionTitle = (isGameJam || isStandalone) ? "Open GitHub Repository" : "Open on Google Play";
+            const downloadTagIcon = isGameJam ? "fa-solid fa-trophy" : (isStandalone ? "fa-solid fa-flask" : "fa-solid fa-download");
+
+            const galleryHtml = (game.gallery || []).map(g => `
+                                <figure class="gallery-item gallery-item-portrait"${g.fit === "contain" ? ' data-fit="contain"' : ''}>
+                                    <img src="${g.src}" alt="${g.alt || game.title}" loading="lazy"
+                                         onerror="this.src='${game.fallbackImage}';" />
+                                    ${g.caption ? `<figcaption>${g.caption}</figcaption>` : ''}
+                                </figure>`).join("");
 
             modalContentContainer.innerHTML = `
                 <div class="project-hero-header">
                     <div class="project-meta-badges">
-                        <a class="collection-tag" href="${collectionUrl}" target="_blank" rel="noopener" title="${collectionTitle}"><i class="fa-solid fa-layer-group"></i> ${game.collection} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; margin-left: 4px;"></i></a>
+                        ${collectionUrl ? `<a class="collection-tag" href="${collectionUrl}" target="_blank" rel="noopener" title="${collectionTitle}"><i class="fa-solid fa-layer-group"></i> ${game.collection} <i class="fa-solid fa-arrow-up-right-from-square" style="font-size: 0.72rem; margin-left: 4px;"></i></a>` : `<span class="collection-tag"><i class="fa-solid fa-layer-group"></i> ${game.collection}</span>`}
                         <span class="downloads-tag"><i class="${downloadTagIcon}"></i> ${game.downloads}</span>
                     </div>
                     <h1 id="modalProjectTitle">${game.title}</h1>
@@ -234,8 +243,8 @@
                     <!-- Gameplay Media Section -->
                     <div class="detail-section-card">
                         <h3><i class="${game.youtubeVideoId ? 'fa-solid fa-film' : 'fa-solid fa-images'}"></i> Gameplay ${game.youtubeVideoId ? 'Video & Screenshots' : 'Media'}</h3>
-                        <div class="media-gallery-grid">
-                            ${game.youtubeVideoId ? `
+                        <div class="media-gallery-grid${game.gallery ? ' media-gallery-portrait' : ''}">
+                            ${game.gallery ? galleryHtml : game.youtubeVideoId ? `
                                 <div class="gallery-item video-gallery-item" id="videoSlot-${game.id}">
                                     ${window.location.protocol === 'file:' ? `
                                         <div class="video-preview-card" onclick="window.open('https://www.youtube.com/watch?v=${game.youtubeVideoId}', '_blank')" title="Mở xem trên YouTube">

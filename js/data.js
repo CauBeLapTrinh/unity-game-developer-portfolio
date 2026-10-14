@@ -3,6 +3,63 @@
    ======================================================== */
 const minigamesData = [
     {
+        id: "royal-puzzle",
+        title: "Royal Puzzle",
+        category: "anti-stress",
+        collection: "Anti-stress Games (BonBonGame)",
+        storeUrl: "",
+        downloads: "In Testing",
+        gradient: "linear-gradient(135deg, #6d28d9, #f59e0b)",
+        icon: "fa-solid fa-chess-rook",
+        image: "Imgs/Minigame/RoyalPuzzle/RoyalPuzzle.png",
+        fallbackImage: "Imgs/Minigame/RoyalPuzzle/Demogame.PNG",
+        gallery: [
+            { src: "Imgs/Minigame/RoyalPuzzle/Demogame.PNG", alt: "Royal Puzzle gameplay - ice cannon aiming at a tower of cans", caption: "Gameplay" },
+            { src: "Imgs/Minigame/RoyalPuzzle/Demo2.PNG", alt: "Royal Puzzle gameplay screenshot 2", caption: "Gameplay" },
+            { src: "Imgs/Minigame/RoyalPuzzle/Demo3.PNG", alt: "Royal Puzzle gameplay screenshot 3", caption: "Gameplay" },
+            { src: "Imgs/Minigame/RoyalPuzzle/ToolGenlevel.PNG", alt: "Royal Puzzle custom level editor window", caption: "Custom Level Editor", fit: "contain" }
+        ],
+        shortDesc: "Minigame of the Anti-stress Games app (in testing): a physics cannon puzzle (internal name RoyalSmash) where you fire balls to knock every block off the board, using TNT chains, shattering glass and jars, rainbow boosters and collectible cannon skins.",
+        details: {
+            overview: "Royal Puzzle is a minigame inside BonBonGame's Anti-stress Games app, currently in the testing and UI polish stage. It is a 3D physics cannon puzzle. The player holds the screen to aim and fire cannonballs along a ballistic arc at structures of stacked blocks standing on a pedestal. A block counts as cleared when it breaks, explodes or falls off the board, and a level is won once every block is gone. Levels mix cans, crates, planks, stone, glass, ink jars and TNT, so every shot is a small physics decision. The game also includes boosters, a coin economy and a gacha system for unlocking cannon skins.",
+            role: {
+                title: "Game Developer",
+                duration: "2026 (Testing & UI polish)",
+                company: "BonBonGame",
+                platform: "Mobile (Unity)",
+                engine: "Unity 6 (C#)",
+                team: "BonBonGame Team"
+            },
+            links: [
+                { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
+            ],
+            contributions: [
+                "Built the core game loop: hold-to-fire input through the Input System, cannon aiming from a projectile-launch formula (v = d/t - 0.5*g*t) and a fire-rate limiter.",
+                "Implemented win/lose rules: a block is cleared when it shatters, detonates or leaves every board footprint (tested in each board's own rotated frame); win once all blocks are cleared, lose when ammo runs out and nothing is still in flight; 1-3 star rating from leftover balls.",
+                "Programmed block behaviours on PhysX rigidbodies: TNT with radial explosion force and chain detonation, shattering glass and ink jars, stone that breaks on landing, and an automatic despawn of cleared blocks.",
+                "Added boosters: More Bullet (+1 ball) and Rainbow, a special ball that triggers a BFS cascade through connected blocks of the same type with rising-pitch audio.",
+                "Created a data-driven content pipeline: 30 levels stored as ScriptableObjects (multi-board layouts, block palette, ball allowance) authored in a custom Unity Level Editor window, plus Editor tools that bake meshes, textures, audio and UI.",
+                "Developed the meta layer: coin economy, weighted gacha packs that drop skin fragments, 7 unlockable cannon skins that change the model, ball material, trail and impact VFX, and animated victory/defeat popups.",
+                "Decoupled gameplay, UI and economy with a static event bus (ammo, level completed/failed, gold changed) and singleton managers."
+            ],
+            techStack: [
+                "Unity 6", "C#", "URP", "PhysX 3D Physics", "Input System", "ScriptableObjects",
+                "Custom Editor Tools", "Event Bus (Observer)", "Coroutine Animation", "Particle System VFX",
+                "Gacha / Economy System", "TextMeshPro"
+            ],
+            techNote: {
+                title: "Tech Note – Ballistic Aiming, Block Physics & Data-Driven Levels",
+                description: "How shots, destruction and level authoring are wired together.",
+                points: [
+                    "Ballistic Aiming: The launch velocity is solved for a fixed flight time derived from ball speed, so the cannon barrel and the fired ball always follow the same parabolic arc to the touched point.",
+                    "Destruction Rules: TNT uses OverlapSphere + AddExplosionForce and chains to neighbouring TNT with a short delay; glass and jars shatter on first contact; stone only breaks when it lands, which rewards knocking structures off the board.",
+                    "Rainbow Cascade: A BFS over blocks of the same kind within a contact radius clears up to 35 blocks, one every 0.06s, with the audio pitch rising along the chain.",
+                    "Level Pipeline: RSLevelDataSO stores block prefab, transform, colour and custom collider data per block plus extra boards; a custom editor window with top-down and front-view grids bakes layouts into these assets."
+                ]
+            }
+        }
+    },
+    {
         id: "fish-eat-fish",
         title: "FishEatFish",
         category: "2-4-player",
