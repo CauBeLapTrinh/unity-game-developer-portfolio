@@ -87,7 +87,7 @@ const minigamesData = [
             overview: "Royal Puzzle is a minigame inside BonBonGame's Anti-stress Games app, currently in the testing and UI polish stage. It is a 3D physics cannon puzzle. The player holds the screen to aim and fire cannonballs along a ballistic arc at structures of stacked blocks standing on a pedestal. A block counts as cleared when it breaks, explodes or falls off the board, and a level is won once every block is gone. Levels mix cans, crates, planks, stone, glass, ink jars and TNT, so every shot is a small physics decision. The game also includes boosters, a coin economy and a gacha system for unlocking cannon skins.",
             role: {
                 title: "Game Developer",
-                duration: "2026 (Testing & UI polish)",
+                duration: "01/2026 - Present (Testing & UI polish)",
                 company: "BonBonGame",
                 platform: "Mobile (Unity)",
                 engine: "Unity 6 (C#)",
@@ -218,7 +218,7 @@ const minigamesData = [
     },
     {
         id: "tank-stars",
-        title: "TankStars",
+        title: "TankWar",
         category: "2-4-player",
         collection: "2 & 4 Player Games",
         storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi",
@@ -229,7 +229,7 @@ const minigamesData = [
         fallbackImage: "Imgs/2Player.png",
         shortDesc: "Designed a centralized Turn Manager orchestrating round cycles, cooldown tracking, dual joystick controls, and custom parabolic projectile trajectory prediction.",
         details: {
-            overview: "TankStars is a tactical turn-based artillery battle game where players control combat tanks on destructible terrain. Featuring dual joystick controls for positioning and gun elevation, players calculate ballistic trajectories to strike opponents with an arsenal of 4 distinct area-of-effect (AoE) weapons.",
+            overview: "TankWar is a tactical turn-based artillery battle game where players control combat tanks on destructible terrain. Featuring dual joystick controls for positioning and gun elevation, players calculate ballistic trajectories to strike opponents with an arsenal of 4 distinct area-of-effect (AoE) weapons.",
             role: {
                 title: "Game Developer",
                 duration: "02/21/2024 - 04/04/2024",
