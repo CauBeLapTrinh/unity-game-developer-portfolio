@@ -10,7 +10,7 @@
     <title>Vu Gia Viet | Unity Game Developer</title>
     <!-- Favicon & Meta -->
     <link rel="icon" type="image/svg+xml"
-        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎮</text></svg>" />
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%230b1220'/><path d='M32 10l19 11v22L32 54 13 43V21zM13 21l19 11 19-11M32 32v22' fill='none' stroke='%23a3e635' stroke-width='4' stroke-linejoin='round'/></svg>" />
     <meta name="theme-color" content="#1e3a8a" />
     <meta property="og:title" content="Vu Gia Viet | Unity Game Developer" />
     <meta property="og:description"
@@ -22,11 +22,12 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800;900&family=Press+Start+2P&display=swap"
         rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
 
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/unity-theme.css" />
 </head>
 
 <body>
@@ -73,12 +74,9 @@
                     <span class="pill"><span class="dot"></span> Available for Unity Game Developer roles</span>
                     <h1>Hi, I'm <span>Vu Gia Viet</span></h1>
                     <p class="hero-subtitle">Unity Game Developer & AI Workflow Integrator</p>
-                    <p class="hero-lead">Game Developer with over 2 years of hands-on experience building
-                        cross-platform 2D/3D games and interactive applications using Unity and C#. Proficient in
-                        integrating
-                        advanced AI workflows (Model Context Protocol - MCP, GitHub Copilot) to automate boilerplate
-                        code,
-                        optimize game physics logic, and sustain stable 60 FPS performance.</p>
+                    <p class="hero-lead">Unity developer with 2+ years of experience building cross-platform 2D/3D games in C#, from
+                        local multiplayer to physics puzzles. I use AI workflows (MCP, Copilot) to automate boilerplate
+                        and keep games running at a steady 60 FPS.</p>
 
                     <div class="hero-actions">
                         <a class="btn btn-accent" href="#minigames">Explore Minigames <i
@@ -106,6 +104,22 @@
                 <div class="portrait-card">
                     <div class="floating-game-badge badge-top-left"><i class="fa-brands fa-unity"></i> Unity 2D/3D</div>
                     <img src="Imgs/Avatar.jpg" alt="Portrait of Vu Gia Viet - Unity Game Developer" />
+                    <svg class="scene-gizmo" viewBox="0 0 80 80" aria-hidden="true">
+                        <circle cx="40" cy="40" r="34" fill="rgba(255,255,255,0.14)" />
+                        <line x1="40" y1="40" x2="66" y2="48" stroke="#ef4444" stroke-width="3" stroke-linecap="round" />
+                        <line x1="40" y1="40" x2="40" y2="12" stroke="#84cc16" stroke-width="3" stroke-linecap="round" />
+                        <line x1="40" y1="40" x2="21" y2="59" stroke="#3b82f6" stroke-width="3" stroke-linecap="round" />
+                        <circle cx="66" cy="48" r="7" fill="#ef4444" /><text x="66" y="51">X</text>
+                        <circle cx="40" cy="12" r="7" fill="#84cc16" /><text x="40" y="15">Y</text>
+                        <circle cx="21" cy="59" r="7" fill="#3b82f6" /><text x="21" y="62">Z</text>
+                    </svg>
+                    <div class="unity-inspector" aria-hidden="true">
+                        <div class="ui-head"><span class="ui-fold">&#9660;</span><span class="ui-check"><i class="fa-solid fa-check"></i></span> DevProfile (Script)</div>
+                        <div class="ui-row"><span>Engine</span><span class="ui-val">Unity 6</span></div>
+                        <div class="ui-row"><span>Language</span><span class="ui-val">C#</span></div>
+                        <div class="ui-row"><span>Target FPS</span><span class="ui-val ui-num">60</span></div>
+                        <div class="ui-row"><span>Open To Work</span><span class="ui-toggle on"></span></div>
+                    </div>
                     <div class="floating-game-badge badge-bottom-right"><i class="fa-solid fa-gamepad"></i> 10M+ Suite Contributor</div>
                     <div class="floating-note">
                         <i class="fa-solid fa-code" style="color: #2563eb;"></i> Open to Mid-level Opportunities
@@ -167,42 +181,35 @@
             <div class="container">
                 <div class="section-heading reveal">
                     <div>
-                        <span class="section-kicker">Flagship Releases // Curated Highlights</span>
-                        <h2>Featured game suites</h2>
+                        <span class="section-kicker">Studio Releases // Awards</span>
+                        <h2>Suites &amp; awards</h2>
                     </div>
-                    <p>Major commercial suites and game jam winners delivered with clean architecture, OOP principles, and optimized runtime performance. (Showing 3 featured flagship collections from a broader portfolio of 10+ commercial games and prototypes).</p>
+                    <p>Where my games shipped: two commercial studio suites and a game jam prize. Every individual minigame is in the catalog above.</p>
                 </div>
 
-                <div class="work-list">
+                <div class="work-list work-compact">
                     <article class="project-card reveal">
                         <div class="project-media">
                             <a href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi"
                                 target="_blank" rel="noopener" title="Download on Google Play"
                                 style="display: flex; align-items: center; justify-content: center; width: 100%; height: 100%;">
-                                <img src="Imgs/2Player.png" alt="2 & 4 Player Games" />
+                                <img src="Imgs/2Player.png" alt="2 &amp; 4 Player Games" />
                             </a>
                         </div>
                         <div class="project-content">
-                            <div class="project-hud-badge"><span class="hud-dot live"></span> Commercial Release // Contributed Suite</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">10M+ Studio Suite</span>
-                                <span class="tag">Unity</span>
                                 <span class="tag">Local Multiplayer</span>
-                                <span class="tag">FSM & Object Pooling</span>
                             </div>
-                            <h3>2 & 4 Player Games</h3>
-                            <p>Commercial mobile game suite reaching over 10M+ downloads on Google Play. Built core
-                                gameplay systems, independent multi-touch joysticks, dynamic character scaling, and
-                                autonomous ambient fish AI for 3 core titles: FishEatFish, BankHeist, and TankStars.</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
+                            <h3>2 &amp; 4 Player Games</h3>
+                            <p>Local multiplayer suite with 10M+ downloads on Google Play. I contributed FishEatFish, BankHeist and TankStars.</p>
+                            <div class="work-actions">
                                 <a class="btn btn-accent"
                                     href="https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi"
-                                    target="_blank" rel="noopener"
-                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
-                                    <i class="fa-brands fa-google-play"></i> Google Play (10M+ Suite)
+                                    target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-google-play"></i> Google Play
                                 </a>
-                                <a class="text-link" href="#minigames">Explore included minigames <i
-                                        class="fa-solid fa-arrow-right"></i></a>
+                                <a class="text-link" href="#minigames">See minigames <i class="fa-solid fa-arrow-right"></i></a>
                             </div>
                         </div>
                     </article>
@@ -216,107 +223,42 @@
                             </a>
                         </div>
                         <div class="project-content">
-                            <div class="project-hud-badge"><span class="hud-dot live"></span> Commercial Release // Contributed Suite</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">1M+ Studio Suite</span>
                                 <span class="tag">Unity 2D</span>
-                                <span class="tag">DistanceJoint2D</span>
-                                <span class="tag">Patrol AI</span>
                             </div>
                             <h3>GameBoy: 100+ Mini Games</h3>
-                            <p>Popular hyper-casual collection with 1M+ downloads. Developed responsive momentum-based
-                                swinging flight dynamics with DistanceJoint2D in StickmanHook, plus 2-player cooperative
-                                puzzle triggers, waypoint patrol AI, and multi-target cameras in StickmanEscape.</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-                                <button class="btn btn-watch-video" onclick="openProjectDetail('stickman-escape', true, true)" type="button">
-                                    <i class="fa-brands fa-youtube"></i> Watch Gameplay Video
-                                </button>
-                                <a class="btn btn-light"
+                            <p>Hyper-casual collection with 1M+ downloads. I contributed StickmanHook and StickmanEscape.</p>
+                            <div class="work-actions">
+                                <a class="btn btn-accent"
                                     href="https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi"
-                                    target="_blank" rel="noopener"
-                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
-                                    <i class="fa-brands fa-google-play"></i> Google Play (1M+ Suite)
+                                    target="_blank" rel="noopener">
+                                    <i class="fa-brands fa-google-play"></i> Google Play
                                 </a>
-                                <a class="text-link" href="#minigames">Explore included minigames <i
-                                        class="fa-solid fa-arrow-right"></i></a>
+                                <button class="text-link text-link-btn" onclick="openProjectDetail('stickman-escape', true, true)" type="button">
+                                    <i class="fa-brands fa-youtube"></i> Gameplay video
+                                </button>
                             </div>
                         </div>
                     </article>
 
                     <article class="project-card reveal">
                         <div class="project-media">
-                            <img src="Imgs/Minigame/Exima/Home.PNG" alt="Exima - Game Jam 2026 Third Prize" />
+                            <img src="Imgs/Minigame/Exima/Home.PNG" alt="Exima - Game Jam 2026 Third Prize" style="padding: 0; object-fit: cover;" />
                         </div>
                         <div class="project-content">
-                            <div class="project-hud-badge"><span class="hud-dot trophy"></span> Competition Award // Third Prize (PTIT)</div>
                             <div class="tag-row">
                                 <span class="tag tag-primary">Third Prize</span>
                                 <span class="tag">PTIT 2026</span>
-                                <span class="tag">Unity</span>
-                                <span class="tag">Rapid Prototyping</span>
                             </div>
-                            <h3>Third Prize - Game Jam 2026 (Exima)</h3>
-                            <p>Award-winning competition entry organized by Posts and Telecommunications Institute of
-                                Technology (PTIT). Designed and shipped a complete playable game prototype within strict
-                                hackathon constraints, focusing on innovative mechanics and rapid iteration.</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-                                <button class="btn btn-accent" onclick="openProjectDetail('exima')" type="button"
-                                    style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
-                                    <i class="fa-solid fa-circle-info"></i> View Project Details
+                            <h3>Game Jam 2026 (Exima)</h3>
+                            <p>Third prize at the PTIT Game Jam: a complete playable prototype shipped within strict hackathon constraints.</p>
+                            <div class="work-actions">
+                                <button class="btn btn-accent" onclick="openProjectDetail('exima')" type="button">
+                                    <i class="fa-solid fa-circle-info"></i> View Details
                                 </button>
                                 <a class="text-link" href="https://github.com/CauBeLapTrinh/GameJam-2026"
-                                    target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repository <i
-                                        class="fa-solid fa-arrow-up-right-from-square"
-                                        style="font-size: 0.74rem;"></i></a>
-                                <a class="text-link"
-                                    href="https://www.facebook.com/gamejam.vn/posts/pfbid0TGtKK9hNQeQQ3yshVtT22bY8yJuuWSnM4wvtB1oPQc8471k5q3m2H8WKbmuNpuPWl"
-                                    target="_blank" rel="noopener"><i class="fa-solid fa-trophy"></i> Game Jam Info <i
-                                        class="fa-solid fa-arrow-up-right-from-square"
-                                        style="font-size: 0.74rem;"></i></a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <article class="project-card archive-card reveal">
-                        <div class="project-media archive-media">
-                            <div class="archive-preview-inner">
-                                <div class="archive-chip-group">
-                                    <span class="archive-chip"><i class="fa-solid fa-cat"></i> CatShakes (Grid Puzzle, Solver &amp; Level Editor)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-chess-rook"></i> Royal Puzzle (Cannon Physics, Anti-stress Games)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-gamepad"></i> FishEatFish (Steering AI)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-sack-dollar"></i> BankHeist (Co-op Vault)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-shield-halved"></i> TankStars (Ballistics)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-person-running"></i> StickmanHook (Rope Physics)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-user-secret"></i> StickmanEscape (Patrol AI)</span>
-                                    <span class="archive-chip"><i class="fa-solid fa-ghost"></i> Exima (Spine 2D Horror)</span>
-                                    <span class="archive-chip archive-chip-more"><i class="fa-solid fa-plus"></i> Additional Studio Prototypes</span>
-                                </div>
-                                <div class="archive-center-badge">
-                                    <i class="fa-solid fa-boxes-stacked"></i>
-                                    <span>10+ TOTAL TITLES</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-content">
-                            <div class="project-hud-badge"><span class="hud-dot archive"></span> Studio Archive // 10+ Total Projects</div>
-                            <div class="tag-row">
-                                <span class="tag tag-primary">10+ Total Titles</span>
-                                <span class="tag">Studio R&D</span>
-                                <span class="tag">Rapid Prototyping</span>
-                                <span class="tag">LiveOps Updates</span>
-                            </div>
-                            <h3>Additional Games, Prototypes & LiveOps</h3>
-                            <p>The projects highlighted above represent selected technical showcases designed to demonstrate specific architectures (AI Steering, Zero-GC Pooling, DistanceJoint2D Physics, MCP Automation). Over 2+ years of production at BonBonGame, I contributed to numerous additional game loops, intern prototypes, level packs, and live performance updates across our mobile catalogue.</p>
-                            <div style="display: flex; flex-wrap: wrap; gap: 14px; align-items: center;">
-                                <a class="btn btn-accent" href="#minigames" style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
-                                    <i class="fa-solid fa-gamepad"></i> Explore Minigames Catalog (8 Dossiers)
-                                </a>
-                                <a class="btn btn-light" href="https://github.com/CauBeLapTrinh" target="_blank" rel="noopener" style="min-height: 40px; padding: 0 20px; font-size: 0.88rem;">
-                                    <i class="fa-brands fa-github"></i> GitHub Repositories
-                                </a>
-                                <a class="text-link" href="#contact">
-                                    Request Additional Demos <i class="fa-solid fa-arrow-right"></i>
-                                </a>
+                                    target="_blank" rel="noopener"><i class="fa-brands fa-github"></i> Repository</a>
                             </div>
                         </div>
                     </article>
@@ -746,6 +688,20 @@
 
     <!-- FOOTER -->
     <footer class="footer">
+        <div class="container">
+            <div class="unity-console" aria-hidden="true">
+                <div class="uc-bar">
+                    <span><i class="fa-solid fa-terminal"></i> Console</span>
+                    <span class="uc-badges">
+                        <span class="info"><i class="fa-solid fa-circle-info"></i> 2</span>
+                        <span class="warn"><i class="fa-solid fa-triangle-exclamation"></i> 0</span>
+                        <span class="err"><i class="fa-solid fa-circle-xmark"></i> 0</span>
+                    </span>
+                </div>
+                <div class="uc-line ok"><i class="fa-solid fa-circle-check"></i><span>Build succeeded: 8 projects loaded, 0 errors, 0 warnings.</span></div>
+                <div class="uc-line"><i class="fa-solid fa-circle-info"></i><span>Thanks for playing! Press "Hire me" to start a new game together.<span class="uc-cursor"></span></span></div>
+            </div>
+        </div>
         <div class="container footer-inner">
             <p>© <span id="currentYear"></span> Vu Gia Viet. All rights reserved.</p>
             <div class="footer-links">
@@ -758,6 +714,7 @@
 
     <script src="js/data.js"></script>
     <script src="js/main.js"></script>
+    <script src="js/unity-theme.js"></script>
 </body>
 
 </html>

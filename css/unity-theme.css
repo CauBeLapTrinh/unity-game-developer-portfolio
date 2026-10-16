@@ -1,0 +1,470 @@
+/* ==========================================================
+   UNITY EDITOR THEME LAYER
+   Decorative layer loaded after style.css. Delete this file
+   (and js/unity-theme.js) to return to the plain design.
+   ========================================================== */
+
+:root {
+    --unity-panel: #2d2f34;
+    --unity-panel-2: #383b42;
+    --unity-line: rgba(255, 255, 255, 0.1);
+    --unity-select: #ff9d00;
+    --unity-x: #ef4444;
+    --unity-y: #84cc16;
+    --unity-z: #3b82f6;
+    --unity-mono: ui-monospace, "Cascadia Code", "SF Mono", Consolas, monospace;
+    --unity-pixel: "Press Start 2P", ui-monospace, monospace;
+}
+
+/* ---------- XP bar (scroll progress) ---------- */
+.xp-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    z-index: 1200;
+    pointer-events: none;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    width: 100%;
+    transform: scaleX(var(--xp, 0));
+    transform-origin: left;
+    background: linear-gradient(90deg, var(--unity-x), #facc15, var(--unity-y), #22d3ee, var(--unity-z));
+    box-shadow: 0 0 14px rgba(163, 230, 53, 0.65);
+    border-radius: 0 4px 4px 0;
+}
+
+/* ---------- Scene HUD (bottom-left) ---------- */
+.scene-hud {
+    position: fixed;
+    left: 18px;
+    bottom: 18px;
+    z-index: 90;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 14px;
+    border-radius: 10px;
+    background: rgba(17, 20, 26, 0.88);
+    border: 1px solid var(--unity-line);
+    color: #d1d5db;
+    font-family: var(--unity-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.03em;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    pointer-events: none;
+}
+
+.scene-hud .hud-lv {
+    font-family: var(--unity-pixel);
+    font-size: 0.52rem;
+    color: #0b1220;
+    background: var(--accent);
+    padding: 5px 7px;
+    border-radius: 5px;
+}
+
+.scene-hud b {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.scene-hud .hud-xp {
+    color: var(--accent);
+}
+
+/* ---------- Back to top ---------- */
+.to-top-btn {
+    position: fixed;
+    right: 18px;
+    bottom: 18px;
+    z-index: 90;
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    border: 1px solid var(--unity-line);
+    background: var(--unity-panel);
+    color: var(--accent);
+    font-size: 1rem;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+    opacity: 0;
+    transform: translateY(14px);
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.2s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.to-top-btn.visible {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+}
+
+.to-top-btn:hover {
+    background: var(--accent);
+    color: #0b1220;
+}
+
+/* ---------- Scene dividers between sections ---------- */
+.scene-divider {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 0 max(20px, calc((100% - 1180px) / 2));
+    height: 0;
+    position: relative;
+    z-index: 2;
+}
+
+.scene-divider::before,
+.scene-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--primary) 0 6px, transparent 6px 12px);
+    opacity: 0.35;
+}
+
+.scene-divider > span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transform: translateY(0);
+    font-family: var(--unity-mono);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #d1d5db;
+    background: var(--unity-panel);
+    border: 1px solid var(--unity-line);
+    border-radius: 8px;
+    padding: 6px 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+}
+
+.scene-divider > span > i {
+    color: var(--accent);
+}
+
+.scene-divider .axis {
+    display: inline-flex;
+    gap: 3px;
+}
+
+.scene-divider .axis em {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    display: block;
+}
+
+.scene-divider .axis em:nth-child(1) { background: var(--unity-x); }
+.scene-divider .axis em:nth-child(2) { background: var(--unity-y); }
+.scene-divider .axis em:nth-child(3) { background: var(--unity-z); }
+
+/* ---------- Hero portrait: fix clipped floating badges ---------- */
+.portrait-card {
+    overflow: visible;
+}
+
+.portrait-card::before {
+    border-radius: inherit;
+}
+
+/* ---------- Hero: Inspector panel ---------- */
+.unity-inspector {
+    position: absolute;
+    right: 26px;
+    top: 112px;
+    width: 176px;
+    z-index: 2;
+    background: rgba(35, 37, 42, 0.92);
+    border: 1px solid var(--unity-line);
+    border-radius: 8px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    font-family: var(--unity-mono);
+    font-size: 0.66rem;
+    color: #c9ccd2;
+    overflow: hidden;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    animation: unityPanelIn 0.8s ease 0.5s both;
+}
+
+.ui-head {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    padding: 8px 10px;
+    background: var(--unity-panel-2);
+    border-bottom: 1px solid var(--unity-line);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.ui-head .ui-fold {
+    font-size: 0.55rem;
+    color: #9ca3af;
+}
+
+.ui-head .ui-check {
+    width: 13px;
+    height: 13px;
+    border-radius: 3px;
+    background: var(--unity-z);
+    display: grid;
+    place-items: center;
+    font-size: 0.5rem;
+}
+
+.ui-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 6px 10px;
+}
+
+.ui-row + .ui-row {
+    border-top: 1px solid rgba(255, 255, 255, 0.04);
+}
+
+.ui-val {
+    flex: 0 1 84px;
+    min-width: 0;
+    padding: 3px 7px;
+    background: #1b1c20;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 4px;
+    color: #e5e7eb;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.ui-val.ui-num {
+    color: #7dd3fc;
+}
+
+.ui-toggle {
+    width: 14px;
+    height: 14px;
+    border-radius: 3px;
+    background: #1b1c20;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    position: relative;
+}
+
+.ui-toggle.on::after {
+    content: "";
+    position: absolute;
+    left: 3px;
+    top: 0;
+    width: 4px;
+    height: 8px;
+    border: solid var(--accent);
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* ---------- Hero: Scene gizmo ---------- */
+.scene-gizmo {
+    position: absolute;
+    top: 26px;
+    right: 28px;
+    width: 74px;
+    height: 74px;
+    z-index: 2;
+    filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5));
+    animation: gizmoBob 6s ease-in-out infinite alternate;
+}
+
+.scene-gizmo text {
+    font-family: var(--unity-mono);
+    font-size: 8px;
+    font-weight: 700;
+    fill: #0b1220;
+    text-anchor: middle;
+}
+
+@keyframes gizmoBob {
+    from { transform: rotate(-6deg); }
+    to { transform: rotate(8deg); }
+}
+
+@keyframes unityPanelIn {
+    from { opacity: 0; transform: translateX(16px); }
+    to { opacity: 1; transform: none; }
+}
+
+/* ---------- Unity "selection" gizmo on hovered cards ---------- */
+.minigame-card::after,
+.stat-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border: 2px solid var(--unity-select);
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    z-index: 4;
+    background:
+        linear-gradient(var(--unity-select), var(--unity-select)) 0 0 / 9px 9px no-repeat,
+        linear-gradient(var(--unity-select), var(--unity-select)) 100% 0 / 9px 9px no-repeat,
+        linear-gradient(var(--unity-select), var(--unity-select)) 0 100% / 9px 9px no-repeat,
+        linear-gradient(var(--unity-select), var(--unity-select)) 100% 100% / 9px 9px no-repeat;
+    transition: opacity 0.2s ease;
+}
+
+.minigame-card:hover::after,
+.minigame-card:focus-within::after,
+.stat-card:hover::after {
+    opacity: 1;
+}
+
+.minigame-card,
+.stat-card {
+    position: relative;
+}
+
+/* ---------- Pixel "achievement" accents ---------- */
+.achievement-pill,
+.catalog-counter-pill {
+    font-family: var(--unity-mono);
+}
+
+/* ---------- Footer: Unity console ---------- */
+.unity-console {
+    margin: 0 auto 26px;
+    max-width: 760px;
+    background: var(--unity-panel);
+    border: 1px solid var(--unity-line);
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: var(--unity-mono);
+    font-size: 0.76rem;
+    color: #c9ccd2;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.25);
+}
+
+.uc-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 8px 12px;
+    background: var(--unity-panel-2);
+    border-bottom: 1px solid var(--unity-line);
+    color: #ffffff;
+    font-weight: 700;
+}
+
+.uc-badges {
+    display: inline-flex;
+    gap: 6px;
+}
+
+.uc-badges span {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    background: #1b1c20;
+    color: #d1d5db;
+    font-weight: 600;
+}
+
+.uc-badges .info i { color: #60a5fa; }
+.uc-badges .warn i { color: #facc15; }
+.uc-badges .err i { color: #f87171; }
+
+.uc-line {
+    display: flex;
+    gap: 10px;
+    padding: 8px 12px;
+    line-height: 1.5;
+}
+
+.uc-line:nth-child(even) {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.uc-line i {
+    margin-top: 3px;
+    color: #60a5fa;
+}
+
+.uc-line.ok i { color: var(--accent); }
+
+.uc-cursor {
+    display: inline-block;
+    width: 7px;
+    height: 13px;
+    margin-left: 3px;
+    vertical-align: -2px;
+    background: var(--accent);
+    animation: ucBlink 1s steps(1) infinite;
+}
+
+@keyframes ucBlink {
+    50% { opacity: 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+    .scene-hud {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    /* the panel would cover the face on a phone-sized portrait */
+    .unity-inspector {
+        display: none;
+    }
+
+    .scene-gizmo {
+        width: 56px;
+        height: 56px;
+        right: 20px;
+        top: 22px;
+    }
+
+    .scene-divider span .axis {
+        display: none;
+    }
+
+    .to-top-btn {
+        right: 12px;
+        bottom: 12px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .scene-gizmo,
+    .unity-inspector,
+    .uc-cursor {
+        animation: none;
+    }
+}
+
+/* keep fixed HUD / back-to-top from covering the footer */
+.footer {
+    padding-bottom: 84px;
+}
+
+/* The panel sits to the right of the face; hide it when the portrait is too narrow */
+@media (max-width: 1199px) {
+    .unity-inspector {
+        display: none;
+    }
+}

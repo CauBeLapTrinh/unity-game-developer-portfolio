@@ -1761,6 +1761,74 @@
         }
 
         /* Project HUD Status & Viewport indicator */
+        /* Compact "Suites & awards" grid (3 across) */
+        .work-list.work-compact {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .work-compact .project-card,
+        .work-compact .project-card:nth-child(even) {
+            grid-template-columns: 1fr;
+            gap: 18px;
+            padding: 18px;
+            align-content: start;
+        }
+
+        .work-compact .project-card:nth-child(even) .project-media {
+            order: 0;
+        }
+
+        .work-compact .project-media {
+            min-height: 0;
+            aspect-ratio: 16 / 10;
+            border-radius: 16px;
+        }
+
+        .work-compact .project-media img {
+            padding: 18px;
+        }
+
+        .work-compact .project-content {
+            padding: 4px 6px 6px;
+        }
+
+        .work-compact .tag-row {
+            margin-bottom: 12px;
+        }
+
+        .work-compact .project-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .work-compact .project-content p {
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+        }
+
+        .work-actions {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 16px;
+        }
+
+        .work-actions .btn {
+            min-height: 40px;
+            padding: 0 18px;
+            font-size: 0.88rem;
+        }
+
+        .text-link-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font: inherit;
+            font-weight: 900;
+            padding: 0;
+        }
+
         .project-hud-badge {
             display: inline-flex;
             align-items: center;
