@@ -3,6 +3,69 @@
    ======================================================== */
 const minigamesData = [
     {
+        id: "cat-shakes",
+        title: "CatShakes",
+        category: "personal",
+        collection: "Personal Project (Drunkboy)",
+        storeUrl: "https://github.com/CauBeLapTrinh/MemeShakes",
+        downloads: "In Development",
+        gradient: "linear-gradient(135deg, #16a34a, #facc15)",
+        icon: "fa-solid fa-cat",
+        image: "Imgs/Minigame/CatShakes/IconGame.png",
+        thumbStyle: "icon",
+        fallbackImage: "Imgs/Minigame/CatShakes/GamePlay.png",
+        galleryLayout: "landscape",
+        gallery: [
+            { src: "Imgs/Minigame/CatShakes/GamePlay.png", alt: "CatShakes gameplay - two cat arms meeting for a handshake", caption: "Gameplay" },
+            { src: "Imgs/Minigame/CatShakes/HomeScene.PNG", alt: "CatShakes main menu with Play, Speed Run and Settings", caption: "Main Menu" },
+            { src: "Imgs/Minigame/CatShakes/LeaderBoard.png", alt: "CatShakes Speedrun leaderboard", caption: "Speedrun Leaderboard" },
+            { src: "Imgs/Minigame/CatShakes/ToolGenLevel.png", alt: "CatShakes custom level editor window in Unity", caption: "Custom Level Editor", fit: "contain" }
+        ],
+        shortDesc: "Two-cat arm puzzle (Sokoban-style) on a pure grid-logic core: stretch snake-like arms to push barrels, flip switches, beat closing doors and shake hands. Ships with a BFS solver, a level generator and a custom Unity level editor.",
+        details: {
+            overview: "CatShakes is a mobile pixel-art logic puzzle for Android. Two cats stand on a grid and each has a snake-like arm that grows one cell per move, up to a per-level step budget. The goal is to make the two hands meet on the same cell (the handshake). Along the way the arms push wooden barrels, shove the other cat's whole body, press hold-switches and toggle-switches, and race closing doors: a door that shuts on an arm cuts it and leaves a severed hand that behaves like a barrel, and a door that shuts on a cat's body loses the level. The game has a 35-level campaign (tutorial + 34 levels), a Speedrun mode with a leaderboard, and a skin shop unlocked with rewarded ads.",
+            role: {
+                title: "Solo Game Developer",
+                duration: "10/2026 (In development)",
+                company: "Drunkboy (Personal Studio)",
+                platform: "Android (Mobile)",
+                engine: "Unity 6 (6000.3, C#)",
+                team: "Solo"
+            },
+            links: [
+                { name: "GitHub Repository", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh/MemeShakes" },
+                { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
+            ],
+            contributions: [
+                "Architected an authoritative grid core (GridManager, GridSpace, GridEntity) where every puzzle rule is decided on Vector2Int data with HashSet/Dictionary lookups - no Rigidbody2D or Physics2D - and visual components only mirror those decisions, which keeps behaviour deterministic and testable.",
+                "Implemented the snake-arm mechanic (CatArmController): the arm is a list of grid cells that extends, retracts and bends with elbow sprites, spends a per-cat step budget, pushes barrels and pushes the other cat's body together with its whole arm when every target cell is free; the level is won when both hands meet.",
+                "Programmed door and switch logic: momentary and toggle switches linked to doors through a linkId, doors whose open state is derived from linked switches (with an inverted 'starts open' mode), crushing of barrels, arm cutting that leaves a severed hand acting like a barrel, and a lose state when a door crushes a cat.",
+                "Built Undo/Reset with immutable GameStateSnapshot objects (arm paths, cat roots, barrels, severed hands, toggle states) on an undo stack; door states are not stored because they are re-derived from the switches.",
+                "Created a multi-touch hybrid input scheme: dragging from a cat moves its hand cell by cell (dragging back retracts), swiping anywhere moves the selected cat, and a tap on an adjacent cell moves the hand; every finger is tracked independently so two fingers can steer both cats at once, using the Input System with a legacy-input fallback.",
+                "Developed a data-driven content pipeline: 35 levels stored as LevelDataSO ScriptableObjects (grid from 8x3 up to 14x10) with a Validate() pass, ASCII-layout import, and a custom Level Editor window with click-to-paint, live validation, ASCII import/export, one-click play-test, SerializedObject-based Undo/Redo and a reader that measures a level picture dropped into the window.",
+                "Wrote an editor-side puzzle solver and level generator: a breadth-first search over the complete game state finds the shortest solution (stored as text such as 'A:UU B:LLDDDDRR A:UR B:LLUUUL'), and the generator invents random levels by difficulty, keeping only provably solvable ones whose solution uses enough distinct mechanics.",
+                "Implemented the meta layer: Speedrun mode with one continuous timer (load screens and fades excluded) and a saved best time, a server-less leaderboard that is deterministic from a seed plus the current date, a 6-skin shop (Meme Cat, Tabby Cat, Patch Cat, Banana Cat, Scream Cat, House Aura) unlocked through Unity LevelPlay rewarded ads with per-skin progress, an ad-free test build switch, and an analytics wrapper with optional Firebase.",
+                "Added game feel with code-generated assets: pixel particle bursts (PixelFx), a victory effect, event-driven sound effects that bind to the grid automatically, a 16-bar chiptune loop composed in code and rendered to WAV by an editor tool, a camera fitter for any aspect ratio, and a one-click scene setup tool."
+            ],
+            techStack: [
+                "Unity 6", "C#", "URP 2D", "Grid / Sokoban Logic", "ScriptableObjects", "Custom Editor Window",
+                "BFS Puzzle Solver", "Procedural Level Generation", "Multi-touch Input (Input System)", "Undo Snapshots",
+                "Event-driven Architecture", "Unity LevelPlay (Rewarded Ads)", "Firebase Analytics (optional)",
+                "Procedural Audio & Pixel FX", "TextMeshPro"
+            ],
+            techNote: {
+                title: "Tech Note – Pure Grid Logic, BFS Solver & Level Generation",
+                description: "Rule engine, automated level validation and content tooling.",
+                points: [
+                    "Pure Grid Rules: GridManager resolves every move as data (bounds, walls, doors, arm cells, barrel push, cat push) and returns a MoveOutcome enum (Extended, ExtendedAndPushedBarrel, Retracted, BlockedByWall, BlockedByClosedDoor...), so UI, sound and effects subscribe to events (MoveResolved, ArmCut, DoorChanged, SwitchChanged, ObjectPushed, Won, Lost) instead of polling.",
+                    "BFS Solver: PuzzleModel is a UnityEngine-free copy of the rules, so the solver can explore the full state space (both arms, cat roots, barrels, severed hands, toggles) with a visited set and a state cap, returning the shortest solution or proving the level unsolvable.",
+                    "Generator With Guarantees: random layouts are accepted only if the solver proves them solvable, the step budgets are as small as the puzzle allows, and SolutionStats shows the solution needs enough different mechanics (barrel push, cat push, arm cut, toggle, hold-switch, door).",
+                    "Deterministic Fake Leaderboard: ranks are computed from a fixed seed and the date - elite players follow an exponential learning curve and a crowd grows daily - so every device shows the same board with no backend."
+                ]
+            }
+        }
+    },
+    {
         id: "royal-puzzle",
         title: "Royal Puzzle",
         category: "anti-stress",

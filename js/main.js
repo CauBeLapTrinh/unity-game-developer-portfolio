@@ -4,6 +4,47 @@
         const minigamesGrid = document.getElementById("minigamesGrid");
         const filterTabs = document.getElementById("filterTabs");
 
+        const PLAY_STORE_2P = "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi";
+        const PLAY_STORE_GAMEBOY = "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi";
+
+        // Single source of truth for per-category link/badge/icon/title decisions
+        function getCategoryMeta(game) {
+            switch (game.category) {
+                case "gamejam":
+                    return {
+                        url: game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026",
+                        badgeIcon: "fa-solid fa-trophy",
+                        badgeTitle: "View on GitHub / Competition Award",
+                        collectionTitle: "Open GitHub Repository",
+                        tagIcon: "fa-solid fa-trophy"
+                    };
+                case "anti-stress":
+                    return {
+                        url: game.storeUrl,
+                        badgeIcon: "fa-solid fa-flask",
+                        badgeTitle: "View on GitHub",
+                        collectionTitle: "Open GitHub Repository",
+                        tagIcon: "fa-solid fa-flask"
+                    };
+                case "personal":
+                    return {
+                        url: game.storeUrl,
+                        badgeIcon: "fa-brands fa-github",
+                        badgeTitle: "View on GitHub",
+                        collectionTitle: "Open GitHub Repository",
+                        tagIcon: "fa-solid fa-code-branch"
+                    };
+                default:
+                    return {
+                        url: game.category === "2-4-player" ? PLAY_STORE_2P : PLAY_STORE_GAMEBOY,
+                        badgeIcon: "fa-brands fa-google-play",
+                        badgeTitle: "View on Google Play",
+                        collectionTitle: "Open on Google Play",
+                        tagIcon: "fa-solid fa-download"
+                    };
+            }
+        }
+
         function renderMinigames(filter = "all") {
             minigamesGrid.innerHTML = "";
             const filtered = filter === "all" ? minigamesData : minigamesData.filter(g => g.category === filter);
@@ -12,19 +53,11 @@
                 const card = document.createElement("article");
                 card.className = "minigame-card reveal show";
 
-                const isGameJam = game.category === "gamejam";
-                const isStandalone = game.category === "anti-stress";
-                const badgeUrl = (isGameJam || isStandalone)
-                    ? (isStandalone ? game.storeUrl : (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026"))
-                    : (game.category === "2-4-player" 
-                        ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
-                        : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
-                const badgeIcon = isGameJam ? "fa-solid fa-trophy" : (isStandalone ? "fa-solid fa-flask" : "fa-brands fa-google-play");
-                const badgeTitle = isGameJam ? "View on GitHub / Competition Award" : (isStandalone ? "View on GitHub" : "View on Google Play");
+                const { url: badgeUrl, badgeIcon, badgeTitle } = getCategoryMeta(game);
 
                 card.innerHTML = `
                     ${badgeUrl ? `<a class="card-badge-top" href="${badgeUrl}" target="_blank" rel="noopener" title="${badgeTitle}" onclick="event.stopPropagation()"><i class="${badgeIcon}"></i> ${game.downloads}</a>` : `<span class="card-badge-top"><i class="${badgeIcon}"></i> ${game.downloads}</span>`}
-                    <div class="minigame-thumb">
+                    <div class="minigame-thumb${game.thumbStyle === 'icon' ? ' minigame-thumb-icon' : ''}"${game.thumbStyle === 'icon' ? ` style="background: ${game.gradient}"` : ''}>
                         <img src="${game.image}" alt="${game.title}"
                              onerror="handleImageFallback(this, '${game.fallbackImage}', '${game.title}', '${game.icon}', '${game.gradient}')" />
                         ${game.youtubeVideoId ? `
@@ -89,6 +122,151 @@
         const modalContentContainer = document.getElementById("modalContentContainer");
         const btnBackProjects = document.getElementById("btnBackProjects");
 
+        /* ========================================================
+           GALLERY CAROUSEL (centered slide, dimmed neighbours) + LIGHTBOX
+           ======================================================== */
+        const lightbox = (function createLightbox() {
+            const root = document.createElement("div");
+            root.className = "gc-lightbox";
+            root.setAttribute("role", "dialog");
+            root.setAttribute("aria-modal", "true");
+            root.setAttribute("aria-label", "Image viewer");
+            root.innerHTML = `
+                <button class="gc-lb-close" type="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></button>
+                <button class="gc-lb-nav gc-lb-prev" type="button" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                <figure class="gc-lb-figure">
+                    <img class="gc-lb-img" alt="" />
+                    <figcaption class="gc-lb-caption"></figcaption>
+                </figure>
+                <button class="gc-lb-nav gc-lb-next" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+            `;
+            document.body.appendChild(root);
+
+            const img = root.querySelector(".gc-lb-img");
+            const caption = root.querySelector(".gc-lb-caption");
+            const prevBtn = root.querySelector(".gc-lb-prev");
+            const nextBtn = root.querySelector(".gc-lb-next");
+            let items = [];
+            let index = 0;
+            let onChange = null;
+
+            function show(i) {
+                index = Math.max(0, Math.min(items.length - 1, i));
+                const item = items[index];
+                img.src = item.src;
+                img.alt = item.alt || "";
+                caption.textContent = (item.caption ? item.caption + "  ·  " : "") + (index + 1) + " / " + items.length;
+                prevBtn.disabled = index === 0;
+                nextBtn.disabled = index === items.length - 1;
+                if (onChange) onChange(index);
+            }
+
+            function open(list, startIndex, changeCb) {
+                items = list;
+                onChange = changeCb;
+                root.classList.add("open");
+                show(startIndex);
+            }
+
+            function close() {
+                root.classList.remove("open");
+                img.removeAttribute("src");
+            }
+
+            const isOpen = () => root.classList.contains("open");
+
+            prevBtn.addEventListener("click", () => show(index - 1));
+            nextBtn.addEventListener("click", () => show(index + 1));
+            root.querySelector(".gc-lb-close").addEventListener("click", close);
+            root.addEventListener("click", (e) => {
+                // click on the dark backdrop (not on image / buttons) closes
+                if (e.target === root || e.target.classList.contains("gc-lb-figure")) close();
+            });
+
+            window.addEventListener("keydown", (e) => {
+                if (!isOpen()) return;
+                if (e.key === "Escape") { close(); e.stopImmediatePropagation(); }
+                else if (e.key === "ArrowLeft") show(index - 1);
+                else if (e.key === "ArrowRight") show(index + 1);
+                else return;
+                e.preventDefault();
+            });
+
+            // Touch swipe inside the lightbox
+            let touchX = null;
+            root.addEventListener("touchstart", (e) => { touchX = e.touches[0].clientX; }, { passive: true });
+            root.addEventListener("touchend", (e) => {
+                if (touchX === null) return;
+                const dx = e.changedTouches[0].clientX - touchX;
+                touchX = null;
+                if (Math.abs(dx) > 50) show(index + (dx < 0 ? 1 : -1));
+            });
+
+            return { open, close, isOpen };
+        })();
+
+        function initGalleryCarousel(root, gallery) {
+            const track = root.querySelector(".gc-track");
+            const slides = [...root.querySelectorAll(".gc-slide")];
+            const dots = [...root.querySelectorAll(".gc-dot")];
+            const prevBtn = root.querySelector(".gc-prev");
+            const nextBtn = root.querySelector(".gc-next");
+            let active = 0;
+            let ticking = false;
+
+            function setActive(i) {
+                active = i;
+                slides.forEach((el, k) => el.classList.toggle("is-active", k === i));
+                dots.forEach((el, k) => el.classList.toggle("is-active", k === i));
+                prevBtn.disabled = i === 0;
+                nextBtn.disabled = i === slides.length - 1;
+            }
+
+            function goTo(i, smooth = true) {
+                i = Math.max(0, Math.min(slides.length - 1, i));
+                const slide = slides[i];
+                track.scrollTo({
+                    left: slide.offsetLeft - (track.clientWidth - slide.offsetWidth) / 2,
+                    behavior: smooth ? "smooth" : "auto"
+                });
+                setActive(i);
+            }
+
+            function syncFromScroll() {
+                ticking = false;
+                const center = track.scrollLeft + track.clientWidth / 2;
+                let best = 0, bestDist = Infinity;
+                slides.forEach((el, k) => {
+                    const dist = Math.abs(el.offsetLeft + el.offsetWidth / 2 - center);
+                    if (dist < bestDist) { bestDist = dist; best = k; }
+                });
+                if (best !== active) setActive(best);
+            }
+
+            track.addEventListener("scroll", () => {
+                if (!ticking) { ticking = true; requestAnimationFrame(syncFromScroll); }
+            }, { passive: true });
+
+            prevBtn.addEventListener("click", () => goTo(active - 1));
+            nextBtn.addEventListener("click", () => goTo(active + 1));
+            dots.forEach(d => d.addEventListener("click", () => goTo(Number(d.dataset.index))));
+
+            track.addEventListener("keydown", (e) => {
+                if (e.key === "ArrowLeft") { goTo(active - 1); e.preventDefault(); }
+                else if (e.key === "ArrowRight") { goTo(active + 1); e.preventDefault(); }
+            });
+
+            slides.forEach((slide, k) => {
+                slide.addEventListener("click", () => {
+                    lightbox.open(gallery, k, (i) => goTo(i, false));
+                });
+            });
+
+            setActive(0);
+            // layout is only measurable once the modal is visible
+            requestAnimationFrame(() => goTo(0, false));
+        }
+
         function openProjectDetail(gameId, updateHash = true, scrollToVideo = false) {
             const game = minigamesData.find(g => g.id === gameId || (gameId === "death-loop" && g.id === "exima"));
             if (!game) return;
@@ -143,22 +321,27 @@
                 `;
             }
 
-            const isGameJam = game.category === "gamejam";
-            const isStandalone = game.category === "anti-stress";
-            const collectionUrl = (isGameJam || isStandalone)
-                ? (isStandalone ? game.storeUrl : (game.storeUrl || "https://github.com/CauBeLapTrinh/GameJam-2026")) 
-                : (game.category === "2-4-player" 
-                    ? "https://play.google.com/store/apps/details?id=com.bonbongame.two.player.games.with.friends&hl=vi" 
-                    : "https://play.google.com/store/apps/details?id=com.bonbongame.stickman.world.games&hl=vi");
-            const collectionTitle = (isGameJam || isStandalone) ? "Open GitHub Repository" : "Open on Google Play";
-            const downloadTagIcon = isGameJam ? "fa-solid fa-trophy" : (isStandalone ? "fa-solid fa-flask" : "fa-solid fa-download");
+            const { url: collectionUrl, badgeIcon, collectionTitle, tagIcon: downloadTagIcon } = getCategoryMeta(game);
+            const galleryLayout = game.galleryLayout === "landscape" ? "landscape" : "portrait";
 
-            const galleryHtml = (game.gallery || []).map(g => `
-                                <figure class="gallery-item gallery-item-portrait"${g.fit === "contain" ? ' data-fit="contain"' : ''}>
-                                    <img src="${g.src}" alt="${g.alt || game.title}" loading="lazy"
-                                         onerror="this.src='${game.fallbackImage}';" />
-                                    ${g.caption ? `<figcaption>${g.caption}</figcaption>` : ''}
-                                </figure>`).join("");
+            const gallery = game.gallery || [];
+            const galleryHtml = `
+                                <button class="gc-btn gc-prev" type="button" aria-label="Previous image"><i class="fa-solid fa-chevron-left"></i></button>
+                                <div class="gc-track" tabindex="0" aria-label="${game.title} screenshots">
+                                    ${gallery.map((g, i) => `
+                                    <figure class="gc-slide" data-index="${i}"${g.fit === "contain" ? ' data-fit="contain"' : ''} title="Click to enlarge">
+                                        <div class="gc-img-wrap">
+                                            <img src="${g.src}" alt="${g.alt || game.title}" loading="lazy" draggable="false"
+                                                 onerror="this.src='${game.fallbackImage}';" />
+                                            <span class="gc-zoom-hint"><i class="fa-solid fa-magnifying-glass-plus"></i></span>
+                                        </div>
+                                        ${g.caption ? `<figcaption>${g.caption}</figcaption>` : ''}
+                                    </figure>`).join("")}
+                                </div>
+                                <button class="gc-btn gc-next" type="button" aria-label="Next image"><i class="fa-solid fa-chevron-right"></i></button>
+                                <div class="gc-dots">
+                                    ${gallery.map((g, i) => `<button class="gc-dot" type="button" data-index="${i}" aria-label="Go to image ${i + 1}"></button>`).join("")}
+                                </div>`;
 
             modalContentContainer.innerHTML = `
                 <div class="project-hero-header">
@@ -243,7 +426,7 @@
                     <!-- Gameplay Media Section -->
                     <div class="detail-section-card">
                         <h3><i class="${game.youtubeVideoId ? 'fa-solid fa-film' : 'fa-solid fa-images'}"></i> Gameplay ${game.youtubeVideoId ? 'Video & Screenshots' : 'Media'}</h3>
-                        <div class="media-gallery-grid${game.gallery ? ' media-gallery-portrait' : ''}">
+                        <div class="${game.gallery ? 'gallery-carousel gallery-carousel-' + galleryLayout : 'media-gallery-grid'}">
                             ${game.gallery ? galleryHtml : game.youtubeVideoId ? `
                                 <div class="gallery-item video-gallery-item" id="videoSlot-${game.id}">
                                     ${window.location.protocol === 'file:' ? `
@@ -286,7 +469,7 @@
                                         <i class="${game.icon}" style="color: #ffffff; opacity: 0.95;"></i>
                                         <strong style="color: #ffffff; font-size: 1.15rem; margin-top: 6px;">${game.title}</strong>
                                         <span style="color: rgba(255, 255, 255, 0.88); font-size: 0.88rem; margin-top: 4px;">${game.collection}</span>
-                                        <span style="color: #bef264; font-weight: 800; font-size: 0.85rem; margin-top: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="${isGameJam ? 'fa-solid fa-trophy' : 'fa-brands fa-google-play'}"></i> ${game.downloads}</span>
+                                        <span style="color: #bef264; font-weight: 800; font-size: 0.85rem; margin-top: 8px; display: inline-flex; align-items: center; gap: 6px;"><i class="${badgeIcon}"></i> ${game.downloads}</span>
                                     </div>
                                     `}
                                 </div>
@@ -307,6 +490,9 @@
             projectDetailModal.classList.add("active");
             document.body.style.overflow = "hidden";
             projectDetailModal.scrollTop = 0;
+
+            const carouselEl = modalContentContainer.querySelector(".gallery-carousel");
+            if (carouselEl) initGalleryCarousel(carouselEl, gallery);
 
             if (scrollToVideo) {
                 setTimeout(() => {
@@ -351,6 +537,7 @@
 
         // Escape key to close modal
         window.addEventListener("keydown", (e) => {
+            if (lightbox.isOpen()) return; // lightbox handles its own keys
             if (e.key === "Escape" && projectDetailModal.classList.contains("active")) {
                 closeProjectDetail();
             }

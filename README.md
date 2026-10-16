@@ -18,6 +18,10 @@ Personal portfolio showcasing commercial mobile games, prototypes, and technical
   - Contributed Minigames: *StickmanHook*, *StickmanEscape*.
 - **[Game Jam 2026 (Third Prize - Exima)](https://www.facebook.com/gamejam.vn/posts/pfbid0TGtKK9hNQeQQ3yshVtT22bY8yJuuWSnM4wvtB1oPQc8471k5q3m2H8WKbmuNpuPWl)**: Awarded by Posts and Telecommunications Institute of Technology (PTIT).
 
+## 🧪 Personal Projects
+
+- **[CatShakes (In Development)](https://github.com/CauBeLapTrinh/MemeShakes)**: Solo Android pixel-art grid puzzle in Unity 6 where two cats stretch snake-like arms to shake hands, with a BFS solver, a level generator and a custom Unity level editor.
+
 ---
 
 ## 🛠️ Project Structure
@@ -34,7 +38,8 @@ SourceWeb/
 │   ├── 2Player.png        # 2 & 4 Player Games thumbnail
 │   ├── stickman.png       # GameBoy thumbnail
 │   ├── gameJamicon.PNG    # Game Jam award asset
-│   └── MiniGame/          # Folder for individual minigame screenshots and icons
+│   └── Minigame/          # Per-minigame screenshots and icons
+│       └── CatShakes/     # CatShakes screenshots (menu, gameplay, leaderboard, level editor)
 ├── index.html             # Clean, semantic HTML5 structure
 ├── .gitignore             # Git ignore patterns
 └── README.md              # Documentation
@@ -44,7 +49,7 @@ SourceWeb/
 
 ## 🚀 Key Website Features
 
-1. **Minigames Showcase**: Filterable game catalog with responsive cards and Google Play direct links.
+1. **Minigames Showcase**: Filterable catalog of 8 curated projects (studio suites, game jam, personal) with responsive cards and direct Google Play / GitHub links.
 2. **Project Detail Modal (Hash Routing)**: Deep-linking support via `#/project/{game-id}` (e.g., `#/project/fish-eat-fish`).
 3. **Smart Image Fallback**: Automatic fallback to stylized vector banners if custom screenshot assets are pending.
 4. **Dark / Light Theme**: Instant toggle with `localStorage` persistence.
