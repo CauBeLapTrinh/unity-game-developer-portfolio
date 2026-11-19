@@ -20,7 +20,7 @@ Personal portfolio showcasing commercial mobile games, prototypes, and technical
 
 ## 🧪 Personal Projects
 
-- **[CatShakes (In Development)](https://github.com/CauBeLapTrinh/MemeShakes)**: Solo Android pixel-art grid puzzle in Unity 6 where two cats stretch snake-like arms to shake hands, with a BFS solver, a level generator and a custom Unity level editor.
+- **[CatShakes (Google Play)](https://play.google.com/store/apps/details?id=com.drunkboys7.catshakes)** ([source](https://github.com/CauBeLapTrinh/MemeShakes)): Solo Android pixel-art grid puzzle in Unity 6 where two cats stretch snake-like arms to shake hands, with a BFS solver, a level generator and a custom Unity level editor.
 
 ---
 

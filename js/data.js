@@ -7,8 +7,8 @@ const minigamesData = [
         title: "CatShakes",
         category: "personal",
         collection: "Personal Project (Drunkboy)",
-        storeUrl: "https://github.com/CauBeLapTrinh/MemeShakes",
-        downloads: "In Development",
+        storeUrl: "https://play.google.com/store/apps/details?id=com.drunkboys7.catshakes",
+        downloads: "Live on Google Play",
         gradient: "linear-gradient(135deg, #16a34a, #facc15)",
         icon: "fa-solid fa-cat",
         image: "Imgs/Minigame/CatShakes/IconGame.png",
@@ -26,13 +26,14 @@ const minigamesData = [
             overview: "CatShakes is a mobile pixel-art logic puzzle for Android. Two cats stand on a grid and each has a snake-like arm that grows one cell per move, up to a per-level step budget. The goal is to make the two hands meet on the same cell (the handshake). Along the way the arms push wooden barrels, shove the other cat's whole body, press hold-switches and toggle-switches, and race closing doors: a door that shuts on an arm cuts it and leaves a severed hand that behaves like a barrel, and a door that shuts on a cat's body loses the level. The game has a 35-level campaign (tutorial + 34 levels), a Speedrun mode with a leaderboard, and a skin shop unlocked with rewarded ads.",
             role: {
                 title: "Solo Game Developer",
-                duration: "10/2026 (In development)",
+                duration: "10/2026 - Released on Google Play",
                 company: "Drunkboy (Personal Studio)",
                 platform: "Android (Mobile)",
                 engine: "Unity 6 (6000.3, C#)",
                 team: "Solo"
             },
             links: [
+                { name: "Google Play", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.drunkboys7.catshakes" },
                 { name: "GitHub Repository", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh/MemeShakes" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
@@ -70,8 +71,8 @@ const minigamesData = [
         title: "Royal Puzzle",
         category: "anti-stress",
         collection: "Anti-stress Games (BonBonGame)",
-        storeUrl: "",
-        downloads: "In Testing",
+        storeUrl: "https://play.google.com/store/apps/details?id=com.bonbongame.fidget.antistress.asmr&hl=vi",
+        downloads: "Live on Google Play",
         gradient: "linear-gradient(135deg, #6d28d9, #f59e0b)",
         icon: "fa-solid fa-chess-rook",
         image: "Imgs/Minigame/RoyalPuzzle/RoyalPuzzle.png",
@@ -82,18 +83,19 @@ const minigamesData = [
             { src: "Imgs/Minigame/RoyalPuzzle/Demo3.PNG", alt: "Royal Puzzle gameplay screenshot 3", caption: "Gameplay" },
             { src: "Imgs/Minigame/RoyalPuzzle/ToolGenlevel.PNG", alt: "Royal Puzzle custom level editor window", caption: "Custom Level Editor", fit: "contain" }
         ],
-        shortDesc: "Minigame of the Anti-stress Games app (in testing): a physics cannon puzzle (internal name RoyalSmash) where you fire balls to knock every block off the board, using TNT chains, shattering glass and jars, rainbow boosters and collectible cannon skins.",
+        shortDesc: "Minigame of the Anti-stress Games app (live on Google Play): a physics cannon puzzle (internal name RoyalSmash) where you fire balls to knock every block off the board, using TNT chains, shattering glass and jars, rainbow boosters and collectible cannon skins.",
         details: {
-            overview: "Royal Puzzle is a minigame inside BonBonGame's Anti-stress Games app, currently in the testing and UI polish stage. It is a 3D physics cannon puzzle. The player holds the screen to aim and fire cannonballs along a ballistic arc at structures of stacked blocks standing on a pedestal. A block counts as cleared when it breaks, explodes or falls off the board, and a level is won once every block is gone. Levels mix cans, crates, planks, stone, glass, ink jars and TNT, so every shot is a small physics decision. The game also includes boosters, a coin economy and a gacha system for unlocking cannon skins.",
+            overview: "Royal Puzzle is a minigame inside BonBonGame's Anti-stress Games app, now published on Google Play. It is a 3D physics cannon puzzle. The player holds the screen to aim and fire cannonballs along a ballistic arc at structures of stacked blocks standing on a pedestal. A block counts as cleared when it breaks, explodes or falls off the board, and a level is won once every block is gone. Levels mix cans, crates, planks, stone, glass, ink jars and TNT, so every shot is a small physics decision. The game also includes boosters, a coin economy and a gacha system for unlocking cannon skins.",
             role: {
                 title: "Game Developer",
-                duration: "01/2026 - Present (Testing & UI polish)",
+                duration: "01/2026 - Present (Live)",
                 company: "BonBonGame",
                 platform: "Mobile (Unity)",
                 engine: "Unity 6 (C#)",
                 team: "BonBonGame Team"
             },
             links: [
+                { name: "Google Play (Anti-stress Games)", icon: "fa-brands fa-google-play", url: "https://play.google.com/store/apps/details?id=com.bonbongame.fidget.antistress.asmr&hl=vi" },
                 { name: "GitHub Profile", icon: "fa-brands fa-github", url: "https://github.com/CauBeLapTrinh" }
             ],
             contributions: [

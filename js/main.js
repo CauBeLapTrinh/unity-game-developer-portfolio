@@ -21,17 +21,17 @@
                 case "anti-stress":
                     return {
                         url: game.storeUrl,
-                        badgeIcon: "fa-solid fa-flask",
-                        badgeTitle: "View on GitHub",
-                        collectionTitle: "Open GitHub Repository",
+                        badgeIcon: "fa-brands fa-google-play",
+                        badgeTitle: "View on Google Play",
+                        collectionTitle: "Open on Google Play",
                         tagIcon: "fa-solid fa-flask"
                     };
                 case "personal":
                     return {
                         url: game.storeUrl,
-                        badgeIcon: "fa-brands fa-github",
-                        badgeTitle: "View on GitHub",
-                        collectionTitle: "Open GitHub Repository",
+                        badgeIcon: "fa-brands fa-google-play",
+                        badgeTitle: "View on Google Play",
+                        collectionTitle: "Open on Google Play",
                         tagIcon: "fa-solid fa-code-branch"
                     };
                 default:
